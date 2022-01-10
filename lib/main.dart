@@ -8,8 +8,12 @@ import 'win_page/win_page_widget.dart';
 import 'widgets/widgets_widget.dart';
 import 'notifications/notifications_widget.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
+import 'flutter_flow/flutter_flow_util.dart';
 
 void main() async {
+  // Initialize FFAppState.
+  FFAppState();
+
   runApp(MyApp());
 }
 

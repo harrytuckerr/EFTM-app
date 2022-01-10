@@ -108,3 +108,70 @@ class RetrieveImageURLsForPostCall {
         r'''$.guid.rendered''',
       );
 }
+
+class RequestVerificationCodeCall {
+  static Future<ApiCallResponse> call({
+    String email = '',
+    String method = '',
+    String phone = '',
+  }) {
+    final body = '''
+{
+  "email": "${email}",
+  "phone": "${phone}",
+  "method": "${method}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Request Verification Code',
+      apiUrl: 'https://eftmid.com/api/verify',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {
+        'email': email,
+        'method': method,
+        'phone': phone,
+      },
+      body: body,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+    );
+  }
+}
+
+class RegisterEFTMIDCall {
+  static Future<ApiCallResponse> call({
+    String firstName = '',
+    String lastName = '',
+    String phone = '',
+    String email = '',
+    String state = '',
+    String verify = '',
+  }) {
+    final body = '''
+{
+  "firstName": "${firstName}",
+  "lastName": "${lastName}",
+  "phone": "${phone}",
+  "email": "${email}",
+  "state": "${state}",
+  "verify": "${verify}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Register EFTM ID',
+      apiUrl: 'https://eftmid.com/api/eftmid',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {
+        'firstName': firstName,
+        'lastName': lastName,
+        'phone': phone,
+        'email': email,
+        'state': state,
+        'verify': verify,
+      },
+      body: body,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+    );
+  }
+}
