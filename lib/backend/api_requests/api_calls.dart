@@ -58,6 +58,35 @@ class RetrievePostsForTagsCall {
       returnBody: true,
     );
   }
+
+  static dynamic latestPostTitle(dynamic response) => getJsonField(
+        response,
+        r'''$[0].title.rendered''',
+      );
+  static dynamic latestPostImageID(dynamic response) => getJsonField(
+        response,
+        r'''$[0].featured_media''',
+      );
+  static dynamic alltitles(dynamic response) => getJsonField(
+        response,
+        r'''$..title.rendered''',
+      );
+  static dynamic allLinks(dynamic response) => getJsonField(
+        response,
+        r'''$..link''',
+      );
+  static dynamic allExcerpts(dynamic response) => getJsonField(
+        response,
+        r'''$..excerpt.rendered''',
+      );
+  static dynamic latestPostExcerpt(dynamic response) => getJsonField(
+        response,
+        r'''$[0].excerpt.rendered''',
+      );
+  static dynamic latestPostLink(dynamic response) => getJsonField(
+        response,
+        r'''$[0].link''',
+      );
 }
 
 class RetrieveImageURLsForPostCall {
@@ -73,4 +102,9 @@ class RetrieveImageURLsForPostCall {
       returnBody: true,
     );
   }
+
+  static dynamic picURL(dynamic response) => getJsonField(
+        response,
+        r'''$.guid.rendered''',
+      );
 }

@@ -4,8 +4,9 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:e_f_t_m_app/home/home_widget.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'home/home_widget.dart';
-import 'notifications/notifications_widget.dart';
 import 'win_page/win_page_widget.dart';
+import 'widgets/widgets_widget.dart';
+import 'notifications/notifications_widget.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 
 void main() async {
@@ -58,8 +59,9 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'Home': HomeWidget(),
-      'Notifications': NotificationsWidget(),
       'WinPage': WinPageWidget(),
+      'Widgets': WidgetsWidget(),
+      'Notifications': NotificationsWidget(),
     };
     return Scaffold(
       body: tabs[_currentPage],
@@ -75,18 +77,26 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.notifications,
-              size: 24,
-            ),
-            label: 'Notifications',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
               Icons.tag_faces,
               size: 24,
             ),
             label: 'Win',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.now_widgets_rounded,
+              size: 24,
+            ),
+            label: 'Widgets',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.notifications,
+              size: 24,
+            ),
+            label: 'Notifications',
             tooltip: '',
           )
         ],
