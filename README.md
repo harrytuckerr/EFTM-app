@@ -1,2 +1,2 @@
 # EFTM-app
-EFTM react native app
+EFTM Flutter app
