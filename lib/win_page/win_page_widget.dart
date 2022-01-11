@@ -42,6 +42,7 @@ class _WinPageWidgetState extends State<WinPageWidget> {
       body: SafeArea(
         child: Container(
           width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height * 1,
           decoration: BoxDecoration(
             color: Colors.white,
           ),
@@ -74,23 +75,26 @@ class _WinPageWidgetState extends State<WinPageWidget> {
                     decoration: BoxDecoration(
                       color: Colors.white,
                     ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Text(
-                          'Register now for your EFTM ID',
-                          textAlign: TextAlign.center,
-                          style: FlutterFlowTheme.title3,
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
-                          child: Text(
-                            'This unique code will be your ticket to more entries in our giveaways, and even discounts on your next gadget purchase!',
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Text(
+                            'Register now for your EFTM ID',
                             textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.bodyText1,
+                            style: FlutterFlowTheme.title3,
                           ),
-                        ),
-                      ],
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(8, 5, 8, 0),
+                            child: Text(
+                              'This unique code will be your ticket to more entries in our giveaways, and even discounts on your next gadget purchase!',
+                              textAlign: TextAlign.center,
+                              style: FlutterFlowTheme.bodyText1,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   Padding(
@@ -348,16 +352,15 @@ class _WinPageWidgetState extends State<WinPageWidget> {
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                     child: FlutterFlowChoiceChips(
-                      initialOption: sMSorEmailValue ??= 'SMS',
+                      initialOption: sMSorEmailValue ??= 'sms',
                       options: [
-                        ChipData('SMS', Icons.phone_android),
-                        ChipData('Email', Icons.email_outlined)
+                        ChipData('sms', Icons.phone_android),
+                        ChipData('email', Icons.email_outlined)
                       ],
                       onChanged: (val) => setState(() => sMSorEmailValue = val),
                       selectedChipStyle: ChipStyle(
                         backgroundColor: Color(0xFF262D34),
-                        textStyle: FlutterFlowTheme.bodyText1.override(
-                          fontFamily: 'Poppins',
+                        textStyle: TextStyle(
                           color: Colors.white,
                         ),
                         iconColor: Colors.white,

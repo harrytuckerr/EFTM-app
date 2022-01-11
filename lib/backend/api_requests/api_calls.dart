@@ -105,7 +105,7 @@ class RetrieveImageURLsForPostCall {
 
   static dynamic picURL(dynamic response) => getJsonField(
         response,
-        r'''$.guid.rendered''',
+        r'''$.source_url''',
       );
 }
 
