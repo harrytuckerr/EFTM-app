@@ -223,8 +223,8 @@ const styles = StyleSheet.create({
     marginLeft: 16,
   },
   Imageaf: {
-    height: 155,
-    width: 155,
+    height: 150,
+    width: 150,
   },
   Textuk: {
     width: '100%',
@@ -233,7 +233,6 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     fontFamily: 'PoppinsBold',
     fontSize: 18,
-    paddingRight: 20,
   },
   TextS9: {
     width: '100%',
@@ -257,15 +256,16 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
   ViewAQ: {
-    flexWrap: 'wrap',
     alignItems: 'flex-start',
-    width: 200,
+    flexWrap: 'wrap',
+    width: 190,
   },
   Viewbe: {
     flexDirection: 'row',
+    marginRight: 20,
   },
   Text_3w: {
-    marginTop: 30,
+    marginTop: 16,
     marginRight: 20,
     fontFamily: 'PoppinsBold',
     fontSize: 20,

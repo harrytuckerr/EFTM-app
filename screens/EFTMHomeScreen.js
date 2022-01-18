@@ -175,10 +175,7 @@ const EFTMHomeScreen = props => {
             <Touchable
               onPress={() => {
                 try {
-                  navigation.navigate('HomeArticles', {
-                    screen: 'ArticleListScreen',
-                    params: { categoryNumber: 7, Category: 'Tech' },
-                  });
+                  navigation.navigate('HomeArticles');
                 } catch (err) {
                   console.error(err);
                 }
@@ -334,10 +331,7 @@ const EFTMHomeScreen = props => {
             <Touchable
               onPress={() => {
                 try {
-                  navigation.navigate('HomeArticles', {
-                    screen: 'ArticleListScreen',
-                    params: { categoryNumber: 3, Category: 'Cars' },
-                  });
+                  navigation.navigate('HomeArticles');
                 } catch (err) {
                   console.error(err);
                 }
@@ -485,10 +479,7 @@ const EFTMHomeScreen = props => {
             <Touchable
               onPress={() => {
                 try {
-                  navigation.navigate('HomeArticles', {
-                    screen: 'ArticleListScreen',
-                    params: { categoryNumber: 5, Category: 'Lifestyle' },
-                  });
+                  navigation.navigate('HomeArticles');
                 } catch (err) {
                   console.error(err);
                 }
@@ -647,10 +638,7 @@ const EFTMHomeScreen = props => {
               <Touchable
                 onPress={() => {
                   try {
-                    navigation.navigate('PodcastHostProfileScreen', {
-                      PodURL:
-                        'api.json?rss_url=https%3A%2F%2Frss.whooshkaa.com%2Frss%2Fpodcast%2Fid%2F902',
-                    });
+                    navigation.navigate('HomeArticles');
                   } catch (err) {
                     console.error(err);
                   }
@@ -673,10 +661,7 @@ const EFTMHomeScreen = props => {
               <Touchable
                 onPress={() => {
                   try {
-                    navigation.navigate('PodcastHostProfileScreen', {
-                      PodURL:
-                        'api.json?rss_url=https%3A%2F%2Frss.whooshkaa.com%2Frss%2Fpodcast%2Fid%2F1045',
-                    });
+                    navigation.navigate('HomeArticles');
                   } catch (err) {
                     console.error(err);
                   }
@@ -699,10 +684,7 @@ const EFTMHomeScreen = props => {
               <Touchable
                 onPress={() => {
                   try {
-                    navigation.navigate('PodcastHostProfileScreen', {
-                      PodURL:
-                        'api.json?rss_url=https%3A%2F%2Frss.whooshkaa.com%2Frss%2Fpodcast%2Fid%2F11663',
-                    });
+                    navigation.navigate('HomeArticles');
                   } catch (err) {
                     console.error(err);
                   }
@@ -725,8 +707,12 @@ const EFTMHomeScreen = props => {
               <Touchable
                 onPress={() => {
                   try {
-                    navigation.navigate('PodcastHostProfileScreen', {
-                      PodURL: 'https://rss.whooshkaa.com/rss/podcast/id/904',
+                    navigation.navigate('HomeArticles', {
+                      screen: 'PodcastHostProfileScreen',
+                      params: {
+                        PodURL:
+                          'api.json?rss_url=https%3A%2F%2Frss.whooshkaa.com%2Frss%2Fpodcast%2Fid%2F904',
+                      },
                     });
                   } catch (err) {
                     console.error(err);
