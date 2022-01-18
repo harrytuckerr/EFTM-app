@@ -2,7 +2,7 @@
   "private": true,
   "name": "eftm",
   "homepage": "https://eftm.draftbit.app",
-  "description": "EFTM App, powered by Draftbit",
+  "description": "EFTM, powered by Draftbit",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {

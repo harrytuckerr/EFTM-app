@@ -19,7 +19,7 @@ const AppVariables = {
   test: '',
   loadmorePage: false,
   loadmore: false,
-  SpotifyPod: ' spotify://show/5wvXj6yUHIItTUNnHIm5E7',
+  SpotifyPod: 'https://open.spotify.com/show/1dyWrsfNO8IxRE7uXjEihQ',
   GooglePod:
     'https://podcasts.google.com/feed/aHR0cHM6Ly9yc3Mud2hvb3Noa2FhLmNvbS9yc3MvcG9kY2FzdC9pZC85MDI',
 };

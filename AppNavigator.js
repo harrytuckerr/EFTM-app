@@ -8,11 +8,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import theme from './themes/DraftbitTheme.js';
 
 import ArticleListScreen from './screens/ArticleListScreen';
-import EFTMHomeScreen from './screens/EFTMHomeScreen';
 import EFTMIDScreen from './screens/EFTMIDScreen';
+import EFTMScreen from './screens/EFTMScreen';
 import MagicLinkConfirmationScreen from './screens/MagicLinkConfirmationScreen';
 import NotificationsScreen from './screens/NotificationsScreen';
-import PodcastHostProfileScreen from './screens/PodcastHostProfileScreen';
+import PodcastSeriesPageScreen from './screens/PodcastSeriesPageScreen';
 import WidgetsScreen from './screens/WidgetsScreen';
 import WinScreen from './screens/WinScreen';
 
@@ -50,9 +50,9 @@ function HomeArticles() {
       }}
     >
       <Stack.Screen
-        name="EFTMHomeScreen"
-        component={EFTMHomeScreen}
-        options={{ title: 'EFTM - Home' }}
+        name="EFTMScreen"
+        component={EFTMScreen}
+        options={{ title: 'EFTM' }}
       />
       <Stack.Screen
         name="ArticleListScreen"
@@ -60,9 +60,9 @@ function HomeArticles() {
         options={{ title: 'ArticleList' }}
       />
       <Stack.Screen
-        name="PodcastHostProfileScreen"
-        component={PodcastHostProfileScreen}
-        options={{ title: 'Podcast Host Profile' }}
+        name="PodcastSeriesPageScreen"
+        component={PodcastSeriesPageScreen}
+        options={{ title: 'PodcastSeriesPage' }}
       />
     </Stack.Navigator>
   );

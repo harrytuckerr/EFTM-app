@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "EFTM App",
+    "name": "EFTM",
     "slug": "eftm",
     "scheme": "eftm",
-    "description": "EFTM Mobile app, primarily for Android",
+    "description": "EFTM is the home of Tech Cars and Lifestyle news and reviews in Australia. The EFTM app is a simple app to for you to catch up with our latest news and podcasts.",
     "privacy": "unlisted",
     "platforms": [
       "ios",
@@ -11,11 +11,11 @@
       "web"
     ],
     "version": "1.0.0",
-    "orientation": "default",
+    "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "splash": {
       "image": "./assets/images/splash.png",
-      "resizeMode": "cover",
+      "resizeMode": "contain",
       "backgroundColor": "#FFFFFF"
     },
     "assetBundlePatterns": [
