@@ -1,4 +1,5 @@
 export default {
+  GooglePodcastsIcon: require('../assets/images/GooglePodcastsIcon.png'),
   Bluegradient: require('../assets/images/Bluegradient.png'),
   Angryimg4: require('../assets/images/Angryimg(4).png'),
   Angryimg3: require('../assets/images/Angryimg(3).png'),

@@ -12,6 +12,7 @@ import EFTMHomeScreen from './screens/EFTMHomeScreen';
 import EFTMIDScreen from './screens/EFTMIDScreen';
 import MagicLinkConfirmationScreen from './screens/MagicLinkConfirmationScreen';
 import NotificationsScreen from './screens/NotificationsScreen';
+import PodcastHostProfileScreen from './screens/PodcastHostProfileScreen';
 import WidgetsScreen from './screens/WidgetsScreen';
 import WinScreen from './screens/WinScreen';
 
@@ -169,6 +170,11 @@ export default function RootAppNavigator() {
           name="WinScreen"
           component={WinScreen}
           options={{ title: 'Win' }}
+        />
+        <Stack.Screen
+          name="PodcastHostProfileScreen"
+          component={PodcastHostProfileScreen}
+          options={{ title: 'Podcast Host Profile' }}
         />
         <Stack.Screen
           name="BottomTabNavigator"

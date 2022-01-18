@@ -1,7 +1,7 @@
 import { Image } from 'react-native';
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
-import { Ionicons } from '@expo/vector-icons';
+import { Entypo, Ionicons } from '@expo/vector-icons';
 
 import IMAGES from './Images.js';
 import FONTS from './Fonts.js';
@@ -23,7 +23,7 @@ function cacheFonts(fonts) {
 export default function cacheAssetsAsync() {
   const imageAssets = cacheImages(Object.values(IMAGES));
   const fontAssets = Font.loadAsync(FONTS);
-  const iconAssets = cacheFonts([Ionicons.font]);
+  const iconAssets = cacheFonts([Entypo.font, Ionicons.font]);
 
   return Promise.all([...imageAssets, ...iconAssets, fontAssets]);
 }

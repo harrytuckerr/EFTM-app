@@ -680,6 +680,7 @@ const styles = StyleSheet.create({
   TextnG: {
     paddingRight: 8,
     paddingLeft: 8,
+    fontFamily: 'PoppinsSemiBold',
   },
   TouchableQ9: {
     marginRight: 8,
@@ -756,6 +757,7 @@ const styles = StyleSheet.create({
   TextVo: {
     paddingRight: 8,
     paddingLeft: 8,
+    fontFamily: 'PoppinsSemiBold',
   },
   Touchableck: {
     marginRight: 8,
@@ -832,6 +834,7 @@ const styles = StyleSheet.create({
   Textbb: {
     paddingRight: 8,
     paddingLeft: 8,
+    fontFamily: 'PoppinsSemiBold',
   },
   TouchableRz: {
     marginRight: 8,

@@ -16,6 +16,3 @@ export { moment };
 
 import { decode } from 'html-entities';
 export { decode };
-
-import DeviceInfo from 'react-native-device-info';
-export { DeviceInfo };
