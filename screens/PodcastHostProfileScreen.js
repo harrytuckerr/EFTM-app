@@ -28,16 +28,22 @@ const PodcastHostProfileScreen = props => {
   const Variables = Constants;
 
   const { theme } = props;
+  const { navigation } = props;
 
   return (
-    <ScreenContainer scrollable={true} hasSafeArea={false}>
+    <ScreenContainer scrollable={true} hasSafeArea={true}>
       <ImageBackground style={styles.ImageBackgroundgA} resizeMode={'cover'}>
         <ScrollView
           showsHorizontalScrollIndicator={true}
           showsVerticalScrollIndicator={true}
           bounces={true}
         >
-          <EFTMPodcastsRSSToJSONApi.FetchGetEFTMPodcastEpisodesGET>
+          <EFTMPodcastsRSSToJSONApi.FetchGetEFTMPodcastEpisodesGET
+            whooska={
+              props.route?.params?.PodURL ??
+              'api.json?rss_url=https%3A%2F%2Frss.whooshkaa.com%2Frss%2Fpodcast%2Fid%2F11663'
+            }
+          >
             {({ loading, error, data, doFetch }) => {
               const fetchData = data;
               if (!fetchData || loading) {
@@ -53,81 +59,93 @@ const PodcastHostProfileScreen = props => {
               }
 
               return (
-                <View style={styles.Viewii}>
-                  <View style={styles.Viewbe}>
-                    <Image
-                      style={[
-                        styles.Imageaf,
-                        { borderRadius: theme.roundness },
-                      ]}
-                      resizeMode={'contain'}
-                      source={{ uri: `${fetchData?.feed?.image}}` }}
+                <>
+                  <View style={styles.View_0Q} pointerEvents={'auto'}>
+                    <IconButton
+                      onPress={() => {
+                        try {
+                          navigation.goBack();
+                        } catch (err) {
+                          console.error(err);
+                        }
+                      }}
+                      icon={'Ionicons/chevron-back'}
+                      size={32}
+                      color={theme.colors.strong}
                     />
-                    <View style={styles.ViewAQ}>
-                      <Text style={[theme.typography.headline5, styles.Textuk]}>
-                        {fetchData?.feed?.title}
-                      </Text>
-
-                      <Text style={[theme.typography.body1, styles.TextS9]}>
-                        {fetchData?.feed?.author}
-                      </Text>
-
-                      <View style={styles.ViewM1} pointerEvents={'auto'}>
-                        <IconButton
-                          onPress={() => {
-                            try {
-                              Linking.openURL(`${Constants['SpotifyPod']}`);
-                            } catch (err) {
-                              console.error(err);
-                            }
-                          }}
-                          style={styles.IconButtonDg}
-                          icon={'Entypo/spotify'}
-                          size={32}
-                          color={theme.colors.custom_rgb27_215_96}
-                        />
-                        <Touchable
-                          onPress={() => {
-                            try {
-                              Linking.openURL(
-                                'https://podcasts.google.com/feed/aHR0cHM6Ly9yc3Mud2hvb3Noa2FhLmNvbS9yc3MvcG9kY2FzdC9pZC85MDI'
-                              );
-                            } catch (err) {
-                              console.error(err);
-                            }
-                          }}
-                          style={styles.TouchableZv}
-                        >
-                          <Image
-                            style={styles.Imagerb}
-                            source={Images.GooglePodcastsIcon}
-                            resizeMode={'contain'}
-                          />
-                        </Touchable>
-                      </View>
-                    </View>
                   </View>
 
-                  <Text
-                    style={[
-                      theme.typography.headline4,
-                      styles.Text_3w,
-                      { color: theme.colors.strong },
-                    ]}
-                  >
-                    {'Description'}
-                  </Text>
+                  <View style={styles.Viewii}>
+                    <View style={styles.Viewbe}>
+                      <Image
+                        style={[
+                          styles.Imageaf,
+                          { borderRadius: theme.roundness },
+                        ]}
+                        resizeMode={'cover'}
+                        source={{ uri: `${fetchData?.feed?.image}` }}
+                      />
+                      <View style={styles.ViewAQ}>
+                        <Text style={styles.Textuk}>
+                          {fetchData?.feed?.title}
+                        </Text>
 
-                  <Text
-                    style={[
-                      theme.typography.subtitle1,
-                      styles.TextI8,
-                      { color: theme.colors.strong },
-                    ]}
-                  >
-                    {fetchData?.feed?.description}
-                  </Text>
-                </View>
+                        <Text style={styles.TextS9}>
+                          {fetchData?.feed?.author}
+                        </Text>
+
+                        <View style={styles.ViewM1} pointerEvents={'auto'}>
+                          <IconButton
+                            onPress={() => {
+                              try {
+                                Linking.openURL(`${Constants['SpotifyPod']}`);
+                              } catch (err) {
+                                console.error(err);
+                              }
+                            }}
+                            icon={'Entypo/spotify'}
+                            size={32}
+                            color={theme.colors.custom_rgb27_215_96}
+                          />
+                          <Touchable
+                            onPress={() => {
+                              try {
+                                Linking.openURL(
+                                  'https://podcasts.google.com/feed/aHR0cHM6Ly9yc3Mud2hvb3Noa2FhLmNvbS9yc3MvcG9kY2FzdC9pZC85MDI'
+                                );
+                              } catch (err) {
+                                console.error(err);
+                              }
+                            }}
+                            style={styles.TouchableZv}
+                          >
+                            <Image
+                              style={styles.Imagerb}
+                              source={Images.GooglePodcastsIcon}
+                              resizeMode={'contain'}
+                            />
+                          </Touchable>
+                        </View>
+                      </View>
+                    </View>
+
+                    <Text
+                      style={[styles.Text_3w, { color: theme.colors.strong }]}
+                    >
+                      {'Description'}
+                    </Text>
+
+                    <Text
+                      style={[
+                        theme.typography.subtitle1,
+                        styles.TextI8,
+                        { color: theme.colors.strong },
+                      ]}
+                    >
+                      {fetchData?.feed?.description}
+                    </Text>
+                  </View>
+                </>
               );
             }}
           </EFTMPodcastsRSSToJSONApi.FetchGetEFTMPodcastEpisodesGET>
@@ -139,18 +157,17 @@ const PodcastHostProfileScreen = props => {
           bounces={true}
         >
           <View style={styles.ViewR9}>
-            <Text
-              style={[
-                theme.typography.headline4,
-                styles.TextMq,
-                { color: theme.colors.strong },
-              ]}
-            >
+            <Text style={[styles.TextMq, { color: theme.colors.strong }]}>
               {'Episodes'}
             </Text>
           </View>
 
-          <EFTMPodcastsRSSToJSONApi.FetchGetEFTMPodcastEpisodesGET>
+          <EFTMPodcastsRSSToJSONApi.FetchGetEFTMPodcastEpisodesGET
+            whooska={
+              props.route?.params?.PodURL ??
+              'api.json?rss_url=https%3A%2F%2Frss.whooshkaa.com%2Frss%2Fpodcast%2Fid%2F11663'
+            }
+          >
             {({ loading, error, data, doFetch }) => {
               const fetchData = data;
               if (!fetchData || loading) {
@@ -174,7 +191,6 @@ const PodcastHostProfileScreen = props => {
                       <View style={styles.ViewxZ}>
                         <Text
                           style={[
-                            theme.typography.subtitle1,
                             styles.TextyM,
                             { color: theme.colors.strong },
                           ]}
@@ -184,7 +200,6 @@ const PodcastHostProfileScreen = props => {
 
                         <View style={styles.Viewhd}>
                           <AudioPlayer
-                            style={styles.AudioPlayerr2}
                             source={{ uri: `${listData?.enclosure?.link}` }}
                           />
                         </View>
@@ -203,6 +218,10 @@ const PodcastHostProfileScreen = props => {
 };
 
 const styles = StyleSheet.create({
+  View_0Q: {
+    alignContent: 'center',
+    marginLeft: 16,
+  },
   Imageaf: {
     height: 155,
     width: 155,
@@ -212,15 +231,16 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     marginLeft: 16,
     alignSelf: 'flex-start',
+    fontFamily: 'PoppinsBold',
+    fontSize: 18,
+    paddingRight: 20,
   },
   TextS9: {
     width: '100%',
     textAlign: 'left',
     marginLeft: 16,
-  },
-  IconButtonDg: {
-    marginLeft: 16,
-    marginTop: 30,
+    fontSize: 14,
+    fontFamily: 'PoppinsSemiBold',
   },
   Imagerb: {
     width: 32,
@@ -229,11 +249,12 @@ const styles = StyleSheet.create({
   TouchableZv: {
     width: 32,
     height: 32,
-    marginTop: 30,
     marginLeft: 16,
   },
   ViewM1: {
     flexDirection: 'row',
+    marginLeft: 16,
+    marginTop: 16,
   },
   ViewAQ: {
     flexWrap: 'wrap',
@@ -245,16 +266,22 @@ const styles = StyleSheet.create({
   },
   Text_3w: {
     marginTop: 30,
+    marginRight: 20,
+    fontFamily: 'PoppinsBold',
+    fontSize: 20,
   },
   TextI8: {
     marginTop: 10,
+    marginRight: 20,
   },
   Viewii: {
     marginLeft: 20,
     marginTop: 20,
   },
   TextMq: {
-    marginTop: 30,
+    marginTop: 16,
+    fontFamily: 'PoppinsBold',
+    fontSize: 18,
   },
   ViewR9: {
     marginLeft: 20,
@@ -262,9 +289,7 @@ const styles = StyleSheet.create({
   TextyM: {
     marginTop: 10,
     textAlign: 'left',
-  },
-  AudioPlayerr2: {
-    alignItems: 'center',
+    fontFamily: 'PoppinsSemiBold',
   },
   Viewhd: {
     alignItems: 'center',
@@ -274,12 +299,12 @@ const styles = StyleSheet.create({
   },
   ViewxZ: {
     marginLeft: 20,
-    marginTop: 10,
     marginRight: 20,
   },
   ImageBackgroundgA: {
     width: '100%',
     height: '100%',
+    marginTop: 16,
   },
 });
 

@@ -52,12 +52,17 @@ function HomeArticles() {
       <Stack.Screen
         name="EFTMHomeScreen"
         component={EFTMHomeScreen}
-        options={{ animationEnabled: true, title: 'EFTM - Home' }}
+        options={{ title: 'EFTM - Home' }}
       />
       <Stack.Screen
         name="ArticleListScreen"
         component={ArticleListScreen}
-        options={{ animationEnabled: true, title: 'ArticleList' }}
+        options={{ title: 'ArticleList' }}
+      />
+      <Stack.Screen
+        name="PodcastHostProfileScreen"
+        component={PodcastHostProfileScreen}
+        options={{ title: 'Podcast Host Profile' }}
       />
     </Stack.Navigator>
   );
@@ -170,11 +175,6 @@ export default function RootAppNavigator() {
           name="WinScreen"
           component={WinScreen}
           options={{ title: 'Win' }}
-        />
-        <Stack.Screen
-          name="PodcastHostProfileScreen"
-          component={PodcastHostProfileScreen}
-          options={{ title: 'Podcast Host Profile' }}
         />
         <Stack.Screen
           name="BottomTabNavigator"

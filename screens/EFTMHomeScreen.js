@@ -487,7 +487,7 @@ const EFTMHomeScreen = props => {
                 try {
                   navigation.navigate('HomeArticles', {
                     screen: 'ArticleListScreen',
-                    params: { Category: 'Lifestyle', categoryNumber: 5 },
+                    params: { categoryNumber: 5, Category: 'Lifestyle' },
                   });
                 } catch (err) {
                   console.error(err);
@@ -621,6 +621,128 @@ const EFTMHomeScreen = props => {
               );
             }}
           </RetrievePostsApi.FetchRetrievePostsForCategoryGET>
+        </View>
+
+        <View style={styles.ViewT9} pointerEvents={'auto'}>
+          <View
+            style={styles.Viewz0}
+            pointerEvents={'auto'}
+            accessibilityElementsHidden={false}
+          >
+            <Text style={[styles.TextYs, { color: theme.colors.strong }]}>
+              {'Podcasts'}
+            </Text>
+          </View>
+
+          <ScrollView
+            contentContainerStyle={styles.ScrollView_8EContent}
+            showsVerticalScrollIndicator={false}
+            bounces={true}
+            horizontal={true}
+          >
+            <View
+              style={[styles.ViewAL, { borderRadius: 25 }]}
+              pointerEvents={'auto'}
+            >
+              <Touchable
+                onPress={() => {
+                  try {
+                    navigation.navigate('PodcastHostProfileScreen', {
+                      PodURL:
+                        'api.json?rss_url=https%3A%2F%2Frss.whooshkaa.com%2Frss%2Fpodcast%2Fid%2F902',
+                    });
+                  } catch (err) {
+                    console.error(err);
+                  }
+                }}
+              >
+                <Image
+                  style={styles.ImageDD}
+                  source={{
+                    uri: 'https://images.whooshkaa.com/podcasts/podcast_902/podcast_media/fca3f0-eftm-podcast-tl-ytl-2020.jpg',
+                  }}
+                  resizeMode={'cover'}
+                />
+              </Touchable>
+            </View>
+
+            <View
+              style={[styles.ViewKB, { borderRadius: 25 }]}
+              pointerEvents={'auto'}
+            >
+              <Touchable
+                onPress={() => {
+                  try {
+                    navigation.navigate('PodcastHostProfileScreen', {
+                      PodURL:
+                        'api.json?rss_url=https%3A%2F%2Frss.whooshkaa.com%2Frss%2Fpodcast%2Fid%2F1045',
+                    });
+                  } catch (err) {
+                    console.error(err);
+                  }
+                }}
+              >
+                <Image
+                  style={styles.ImageuZ}
+                  source={{
+                    uri: 'https://images.whooshkaa.com/podcasts/podcast_1045/podcast_media/608928-tbmyns-thumb-option1-fetch-hisense.jpg',
+                  }}
+                  resizeMode={'cover'}
+                />
+              </Touchable>
+            </View>
+
+            <View
+              style={[styles.ViewLJ, { borderRadius: 25 }]}
+              pointerEvents={'auto'}
+            >
+              <Touchable
+                onPress={() => {
+                  try {
+                    navigation.navigate('PodcastHostProfileScreen', {
+                      PodURL:
+                        'api.json?rss_url=https%3A%2F%2Frss.whooshkaa.com%2Frss%2Fpodcast%2Fid%2F11663',
+                    });
+                  } catch (err) {
+                    console.error(err);
+                  }
+                }}
+              >
+                <Image
+                  style={styles.ImageDv}
+                  source={{
+                    uri: 'https://images.whooshkaa.com/podcasts/podcast_11663/podcast_media/bd9540-eftm-f1-podcast-artwork-2021.jpg',
+                  }}
+                  resizeMode={'cover'}
+                />
+              </Touchable>
+            </View>
+
+            <View
+              style={[styles.ViewWf, { borderRadius: 25 }]}
+              pointerEvents={'auto'}
+            >
+              <Touchable
+                onPress={() => {
+                  try {
+                    navigation.navigate('PodcastHostProfileScreen', {
+                      PodURL: 'https://rss.whooshkaa.com/rss/podcast/id/904',
+                    });
+                  } catch (err) {
+                    console.error(err);
+                  }
+                }}
+              >
+                <Image
+                  style={styles.ImageGb}
+                  source={{
+                    uri: 'https://images.whooshkaa.com/podcasts/podcast_904/podcast_media/3c471b-tbtt-new-thumb-option2.png',
+                  }}
+                  resizeMode={'cover'}
+                />
+              </Touchable>
+            </View>
+          </ScrollView>
         </View>
       </ScrollView>
     </ScreenContainer>
@@ -790,14 +912,15 @@ const styles = StyleSheet.create({
     maxWidth: 320,
   },
   ImageBackground_27: {
-    height: '100%',
+    height: 230,
     justifyContent: 'flex-end',
     opacity: 1,
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
   },
   ImageBackgroundO1: {
     justifyContent: 'flex-end',
     flexWrap: 'wrap',
-    alignItems: 'flex-start',
     height: 230,
     opacity: 1,
   },
@@ -898,6 +1021,62 @@ const styles = StyleSheet.create({
   },
   ViewAb: {
     marginTop: 8,
+    marginBottom: 16,
+  },
+  TextYs: {
+    fontFamily: 'PoppinsSemiBold',
+    fontSize: 20,
+    textAlign: 'left',
+    alignSelf: 'flex-start',
+    marginBottom: 5,
+  },
+  Viewz0: {
+    alignItems: 'center',
+    marginLeft: 16,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  ImageDD: {
+    width: 230,
+    height: 230,
+  },
+  ViewAL: {
+    height: 230,
+    overflow: 'hidden',
+    marginRight: 16,
+  },
+  ImageuZ: {
+    width: 230,
+    height: 230,
+  },
+  ViewKB: {
+    height: 230,
+    overflow: 'hidden',
+    marginRight: 16,
+  },
+  ImageDv: {
+    width: 230,
+    height: 230,
+  },
+  ViewLJ: {
+    height: 230,
+    overflow: 'hidden',
+    marginRight: 16,
+  },
+  ImageGb: {
+    width: 230,
+    height: 230,
+  },
+  ViewWf: {
+    height: 230,
+    overflow: 'hidden',
+    marginRight: 16,
+  },
+  ScrollView_8EContent: {
+    marginLeft: 16,
+    paddingRight: 8,
+  },
+  ViewT9: {
     marginBottom: 16,
   },
 });
