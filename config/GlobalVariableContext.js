@@ -6,13 +6,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const DeviceVariables = {
   States: ['NSW', 'QLD', 'VIC', 'SA', 'WA', 'ACT', 'TAS', 'NT'],
   eftmID: 'Register for your EFTM ID',
-  activated: 'Falsy',
-  DeviceID: '',
-  technotifications: false,
-  carsnotifications: false,
-  lifestylenotifications: false,
-  bignewsnotifications: false,
-  highlightsnotifications: false,
+  activated: false,
+  technotifications: 0,
+  carsnotifications: 0,
+  lifestylenotifications: 0,
+  bignewsnotifications: 0,
+  highlightsnotifications: 0,
 };
 const AppVariables = {
   article: '',

@@ -40,9 +40,13 @@ const EFTMScreen = props => {
   const { navigation } = props;
 
   return (
-    <ScreenContainer scrollable={true} hasSafeArea={false}>
-      <ScrollView showsVerticalScrollIndicator={false} bounces={true}>
-        <View pointerEvents={'auto'}>
+    <ScreenContainer scrollable={false} hasSafeArea={false}>
+      <ScrollView
+        style={styles.ScrollViewsB}
+        bounces={false}
+        showsVerticalScrollIndicator={false}
+      >
+        <View style={styles.ViewFu} pointerEvents={'auto'}>
           <RetrievePostsApi.FetchRetrieveLatestPostFromTagGET tag={8407}>
             {({ loading, error, data, doFetch }) => {
               const fetchData = data;
@@ -59,7 +63,7 @@ const EFTMScreen = props => {
               }
 
               return (
-                <View pointerEvents={'auto'}>
+                <>
                   <FlatList
                     data={fetchData}
                     renderItem={({ item }) => {
@@ -111,7 +115,10 @@ const EFTMScreen = props => {
                                   }}
                                   resizeMode={'cover'}
                                 >
-                                  <View pointerEvents={'auto'}>
+                                  <View
+                                    style={styles.ViewaB}
+                                    pointerEvents={'auto'}
+                                  >
                                     <ImageBackground
                                       style={styles.ImageBackground_6L}
                                       source={Images.Angryimg1}
@@ -157,10 +164,13 @@ const EFTMScreen = props => {
                         </RetrievePostsApi.FetchRetrieveSinglePostMediaGET>
                       );
                     }}
+                    style={styles.FlatListAt}
                     contentContainerStyle={styles.FlatListAtContent}
                     numColumns={1}
+                    horizontal={false}
                   />
-                </View>
+                  <View pointerEvents={'auto'} />
+                </>
               );
             }}
           </RetrievePostsApi.FetchRetrieveLatestPostFromTagGET>
@@ -207,115 +217,107 @@ const EFTMScreen = props => {
               }
 
               return (
-                <View
-                  style={styles.ViewVZ}
-                  pointerEvents={'auto'}
-                  accessibilityElementsHidden={false}
+                <ScrollView
+                  contentContainerStyle={styles.ScrollViewOaContent}
+                  showsVerticalScrollIndicator={false}
+                  bounces={true}
+                  horizontal={true}
+                  showsHorizontalScrollIndicator={false}
                 >
-                  <ScrollView
-                    showsVerticalScrollIndicator={false}
-                    bounces={true}
-                    horizontal={true}
-                    showsHorizontalScrollIndicator={false}
-                  >
-                    <FlatList
-                      data={fetchData}
-                      renderItem={({ item }) => {
-                        const techListData = item;
-                        return (
-                          <View
-                            style={[styles.Vieway, { borderRadius: 14 }]}
-                            pointerEvents={'auto'}
+                  <FlatList
+                    data={fetchData}
+                    renderItem={({ item }) => {
+                      const techListData = item;
+                      return (
+                        <View
+                          style={[styles.Vieway, { borderRadius: 14 }]}
+                          pointerEvents={'auto'}
+                        >
+                          <RetrievePostsApi.FetchRetrieveMediaResolutionsGET
+                            id={techListData?.featured_media}
                           >
-                            <RetrievePostsApi.FetchRetrieveMediaResolutionsGET
-                              id={techListData?.featured_media}
-                            >
-                              {({ loading, error, data, doFetch }) => {
-                                const fetchData = data;
-                                if (!fetchData || loading) {
-                                  return <ActivityIndicator />;
-                                }
+                            {({ loading, error, data, doFetch }) => {
+                              const fetchData = data;
+                              if (!fetchData || loading) {
+                                return <ActivityIndicator />;
+                              }
 
-                                if (error) {
-                                  return (
-                                    <Text style={{ textAlign: 'center' }}>
-                                      There was a problem fetching this data
-                                    </Text>
-                                  );
-                                }
-
+                              if (error) {
                                 return (
-                                  <ImageBackground
-                                    style={[
-                                      styles.ImageBackgroundue,
-                                      { borderRadius: 25 },
-                                    ]}
-                                    resizeMode={'cover'}
-                                    backgroundColor={theme.colors.background}
-                                    source={{
-                                      uri: `${fetchData?.media_details?.sizes?.medium_large?.source_url}`,
+                                  <Text style={{ textAlign: 'center' }}>
+                                    There was a problem fetching this data
+                                  </Text>
+                                );
+                              }
+
+                              return (
+                                <ImageBackground
+                                  style={[
+                                    styles.ImageBackgroundue,
+                                    { borderRadius: 25 },
+                                  ]}
+                                  resizeMode={'cover'}
+                                  backgroundColor={theme.colors.background}
+                                  source={{
+                                    uri: `${fetchData?.media_details?.sizes?.medium_large?.source_url}`,
+                                  }}
+                                >
+                                  <Touchable
+                                    onPress={async () => {
+                                      try {
+                                        await WebBrowser.openBrowserAsync(
+                                          `${techListData?.link}`
+                                        );
+                                      } catch (err) {
+                                        console.error(err);
+                                      }
                                     }}
                                   >
-                                    <Touchable
-                                      onPress={async () => {
-                                        try {
-                                          await WebBrowser.openBrowserAsync(
-                                            `${techListData?.link}`
-                                          );
-                                        } catch (err) {
-                                          console.error(err);
-                                        }
-                                      }}
+                                    <ImageBackground
+                                      style={styles.ImageBackgroundnx}
+                                      source={Images.Bluegradient}
+                                      resizeMode={'cover'}
                                     >
-                                      <ImageBackground
-                                        style={styles.ImageBackgroundnx}
-                                        source={Images.Bluegradient}
-                                        resizeMode={'cover'}
+                                      <View
+                                        style={styles.ViewQr}
+                                        pointerEvents={'auto'}
                                       >
-                                        <View
-                                          style={styles.ViewQr}
-                                          pointerEvents={'auto'}
+                                        <Text
+                                          style={[
+                                            styles.TextoE,
+                                            {
+                                              color: theme.colors.strongInverse,
+                                            },
+                                          ]}
                                         >
-                                          <Text
-                                            style={[
-                                              styles.TextoE,
-                                              {
-                                                color:
-                                                  theme.colors.strongInverse,
-                                              },
-                                            ]}
-                                          >
-                                            {convertHTML(
-                                              techListData?.title?.rendered
-                                            )}
-                                          </Text>
+                                          {convertHTML(
+                                            techListData?.title?.rendered
+                                          )}
+                                        </Text>
 
-                                          <Text
-                                            style={[
-                                              styles.Textiu,
-                                              {
-                                                color: theme.colors.background,
-                                              },
-                                            ]}
-                                          >
-                                            {ConvertTime(techListData?.date)}
-                                          </Text>
-                                        </View>
-                                      </ImageBackground>
-                                    </Touchable>
-                                  </ImageBackground>
-                                );
-                              }}
-                            </RetrievePostsApi.FetchRetrieveMediaResolutionsGET>
-                          </View>
-                        );
-                      }}
-                      contentContainerStyle={styles.FlatListayContent}
-                      numColumns={1}
-                      horizontal={true}
-                    />
-                  </ScrollView>
-                </View>
+                                        <Text
+                                          style={[
+                                            styles.Textiu,
+                                            { color: theme.colors.background },
+                                          ]}
+                                        >
+                                          {ConvertTime(techListData?.date)}
+                                        </Text>
+                                      </View>
+                                    </ImageBackground>
+                                  </Touchable>
+                                </ImageBackground>
+                              );
+                            }}
+                          </RetrievePostsApi.FetchRetrieveMediaResolutionsGET>
+                        </View>
+                      );
+                    }}
+                    contentContainerStyle={styles.FlatListayContent}
+                    numColumns={1}
+                    horizontal={true}
+                  />
+                </ScrollView>
               );
             }}
           </RetrievePostsApi.FetchRetrievePostsForCategoryGET>
@@ -815,19 +817,23 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   ViewMX: {
-    justifyContent: 'space-between',
     paddingTop: 16,
     paddingLeft: 16,
     paddingRight: 16,
     paddingBottom: 16,
+    width: '100%',
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
   },
   ImageBackground_6L: {
     width: '100%',
     height: 300,
     justifyContent: 'space-between',
   },
-  ImageBackgroundZK: {
+  ViewaB: {
     width: '100%',
+  },
+  ImageBackgroundZK: {
     height: 300,
     justifyContent: 'space-between',
     overflow: 'hidden',
@@ -835,11 +841,17 @@ const styles = StyleSheet.create({
   FetchCl: {
     minHeight: 40,
   },
+  FlatListAt: {
+    width: '100%',
+  },
   FlatListAtContent: {
     flex: 1,
   },
   FetchAL: {
     minHeight: 40,
+  },
+  ViewFu: {
+    width: '100%',
   },
   TextY0: {
     fontFamily: 'PoppinsSemiBold',
@@ -910,8 +922,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flex: 1,
   },
-  ViewVZ: {
-    alignItems: 'flex-start',
+  ScrollViewOaContent: {
     marginLeft: 16,
   },
   Fetch_4i: {
@@ -1131,6 +1142,9 @@ const styles = StyleSheet.create({
   },
   ViewT9: {
     marginBottom: 16,
+  },
+  ScrollViewsB: {
+    width: '100%',
   },
 });
 

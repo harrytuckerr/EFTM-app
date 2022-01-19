@@ -15,8 +15,8 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 const NotificationsScreen = props => {
   const Constants = GlobalVariables.useValues();
   const Variables = Constants;
-  const setGlobalVariableValue = GlobalVariables.useSetValue();
 
+  const setGlobalVariableValue = GlobalVariables.useSetValue();
   // Gets device model
   const GetDeviceID = () => {
     let deviceId = CustomCode.DeviceInfo.getDeviceId();
@@ -26,8 +26,17 @@ const NotificationsScreen = props => {
 
   const addAndroidDevicePOST = OneSignalApi.useAddAndroidDevicePOST();
 
+  const [BigNewsswitchValue, setBigNewsswitchValue] = React.useState(false);
+  const [CarsswitchValue, setCarsswitchValue] = React.useState(false);
+  const [LifestyleswitchValue, setLifestyleswitchValue] = React.useState(false);
+  const [TechswitchValue, setTechswitchValue] = React.useState(false);
+  const [highlightsswitchValue, setHighlightsswitchValue] =
+    React.useState(false);
+  const [switchRowValue, setSwitchRowValue] = React.useState(false);
+  const [switchValue, setSwitchValue] = React.useState(false);
+
   return (
-    <ScreenContainer hasSafeArea={true} scrollable={true}>
+    <ScreenContainer hasSafeArea={true} scrollable={false}>
       <View style={styles.ViewnM} pointerEvents={'auto'}>
         <View>
           <View style={styles.ViewLv}>
@@ -61,7 +70,7 @@ const NotificationsScreen = props => {
             >
               <View style={styles.ViewQd}>
                 <View style={styles.ViewG9}>
-                  <View>
+                  <View style={styles.ViewCp}>
                     <Text
                       style={[
                         theme.typography.headline6,
@@ -88,19 +97,20 @@ const NotificationsScreen = props => {
                   </View>
                 </View>
                 <Switch
-                  onValueChange={() => {
+                  onValueChange={TechswitchValue => {
                     try {
-                      setGlobalVariableValue({
-                        key: 'article',
-                        value: '',
+                      setTechswitchValue(TechswitchValue);
+                      const TestV = setGlobalVariableValue({
+                        key: 'technotifications',
+                        value: TechswitchValue,
                       });
+                      console.log(Constants['bignewsnotifications']);
                     } catch (err) {
                       console.error(err);
                     }
                   }}
-                  disabled={false}
-                  color={theme.colors.primary}
                   activeTrackColor={theme.colors.background_blue}
+                  defaultValue={Constants['technotifications']}
                 />
               </View>
             </Touchable>
@@ -112,7 +122,7 @@ const NotificationsScreen = props => {
             <Touchable>
               <View style={styles.ViewbC}>
                 <View style={styles.ViewpT}>
-                  <View>
+                  <View style={styles.ViewVC}>
                     <Text
                       style={[
                         theme.typography.headline6,
@@ -139,9 +149,20 @@ const NotificationsScreen = props => {
                   </View>
                 </View>
                 <Switch
-                  disabled={false}
-                  color={theme.colors.primary}
+                  onValueChange={CarsswitchValue => {
+                    try {
+                      setCarsswitchValue(CarsswitchValue);
+                      const TestV = setGlobalVariableValue({
+                        key: 'carsnotifications',
+                        value: CarsswitchValue,
+                      });
+                      console.log(Constants['bignewsnotifications']);
+                    } catch (err) {
+                      console.error(err);
+                    }
+                  }}
                   activeTrackColor={theme.colors.background_green}
+                  defaultValue={Constants['carsnotifications']}
                 />
               </View>
             </Touchable>
@@ -180,9 +201,20 @@ const NotificationsScreen = props => {
                   </View>
                 </View>
                 <Switch
-                  disabled={false}
-                  color={theme.colors.primary}
+                  onValueChange={LifestyleswitchValue => {
+                    try {
+                      setLifestyleswitchValue(LifestyleswitchValue);
+                      const TestV = setGlobalVariableValue({
+                        key: 'lifestylenotifications',
+                        value: LifestyleswitchValue,
+                      });
+                      console.log(Constants['lifestylenotifications']);
+                    } catch (err) {
+                      console.error(err);
+                    }
+                  }}
                   activeTrackColor={theme.colors.yellow_background}
+                  defaultValue={Constants['lifestylenotifications']}
                 />
               </View>
             </Touchable>
@@ -223,17 +255,19 @@ const NotificationsScreen = props => {
                   </View>
                 </View>
                 <Switch
-                  onValueChange={() => {
+                  onValueChange={highlightsswitchValue => {
                     try {
-                      setGlobalVariableValue({
+                      setHighlightsswitchValue(highlightsswitchValue);
+                      const TestV = setGlobalVariableValue({
                         key: 'highlightsnotifications',
-                        value: '',
+                        value: highlightsswitchValue,
                       });
+                      console.log(Constants['highlightsnotifications']);
                     } catch (err) {
                       console.error(err);
                     }
                   }}
-                  color={theme.colors.primary}
+                  defaultValue={Constants['highlightsnotifications']}
                 />
               </View>
             </Touchable>
@@ -267,11 +301,30 @@ const NotificationsScreen = props => {
                       textBreakStrategy={'highQuality'}
                       ellipsizeMode={'tail'}
                     >
-                      {'Get notified as soon as big, breaking news happens.'}
+                      {
+                        'Get notified as soon as big, breaking news happens. \n '
+                      }
+                      {Constants['bignewsnotifications'] === 'false'
+                        ? false
+                        : true}
                     </Text>
                   </View>
                 </View>
-                <Switch color={theme.colors.primary} />
+                <Switch
+                  onValueChange={BigNewsswitchValue => {
+                    try {
+                      setBigNewsswitchValue(BigNewsswitchValue);
+                      const TestV = setGlobalVariableValue({
+                        key: 'bignewsnotifications',
+                        value: BigNewsswitchValue,
+                      });
+                      console.log(Constants['bignewsnotifications']);
+                    } catch (err) {
+                      console.error(err);
+                    }
+                  }}
+                  defaultValue={Constants['bignewsnotifications']}
+                />
               </View>
             </Touchable>
             <Divider
@@ -286,10 +339,14 @@ const NotificationsScreen = props => {
           <ButtonSolid
             onPress={async () => {
               try {
-                await addAndroidDevicePOST.mutateAsync({
+                const Results = await addAndroidDevicePOST.mutateAsync({
                   deviceOS: 'Android',
-                  phonemodel: GetDeviceID(),
+                  yesnobignews: Constants['bignewsnotifications'],
+                  yesnocars: Constants['carsnotifications'],
+                  yesnohighlights: Constants['highlightsnotifications'],
+                  yesnolifestyle: Constants['lifestylenotifications'],
                 });
+                console.log(Results);
               } catch (err) {
                 console.error(err);
               }
@@ -312,10 +369,14 @@ const styles = StyleSheet.create({
   },
   ViewLv: {
     paddingBottom: 8,
-    paddingTop: 16,
+    paddingTop: 8,
     paddingLeft: 32,
     paddingRight: 32,
     alignItems: 'center',
+  },
+  ViewCp: {
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
   },
   ViewG9: {
     maxWidth: '80%',
@@ -335,6 +396,10 @@ const styles = StyleSheet.create({
   },
   DividerDf: {
     height: 1,
+  },
+  ViewVC: {
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
   },
   ViewpT: {
     maxWidth: '80%',
@@ -358,10 +423,11 @@ const styles = StyleSheet.create({
   ViewY6: {
     flexWrap: 'wrap',
     width: '100%',
+    alignItems: 'flex-start',
   },
   ViewPa: {
     flexDirection: 'row',
-    maxWidth: '80%',
+    maxWidth: '75%',
     width: '100%',
     alignItems: 'center',
   },

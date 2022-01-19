@@ -54,7 +54,7 @@ const ArticleListScreen = props => {
         <IconButton
           onPress={() => {
             try {
-              navigation.navigate('EFTMHomeScreen');
+              navigation.goBack();
               setGlobalVariableValue({
                 key: 'loadmorePage',
                 value: false,
@@ -77,7 +77,7 @@ const ArticleListScreen = props => {
 
       <ScrollView
         contentContainerStyle={styles.ScrollViewrzContent}
-        showsVerticalScrollIndicator={true}
+        showsVerticalScrollIndicator={false}
         bounces={true}
       >
         <RetrievePostsApi.FetchCategoryOffsetPostsGET

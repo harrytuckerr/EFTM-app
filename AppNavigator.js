@@ -41,10 +41,11 @@ function PlaceholderScreen() {
 function HomeArticles() {
   return (
     <Stack.Navigator
-      mode="modal"
+      mode="card"
       headerMode="none"
-      initialRouteName="EFTMHomeScreen"
+      initialRouteName="EFTMScreen"
       screenOptions={{
+        headerTransparent: true,
         gestureEnabled: false,
         animationEnabled: true,
       }}
@@ -52,17 +53,17 @@ function HomeArticles() {
       <Stack.Screen
         name="EFTMScreen"
         component={EFTMScreen}
-        options={{ title: 'EFTM' }}
+        options={{ headerTransparent: true, title: 'EFTM' }}
       />
       <Stack.Screen
         name="ArticleListScreen"
         component={ArticleListScreen}
-        options={{ title: 'ArticleList' }}
+        options={{ headerTransparent: true, title: 'ArticleList' }}
       />
       <Stack.Screen
         name="PodcastSeriesPageScreen"
         component={PodcastSeriesPageScreen}
-        options={{ title: 'PodcastSeriesPage' }}
+        options={{ headerTransparent: true, title: 'PodcastSeriesPage' }}
       />
     </Stack.Navigator>
   );
@@ -70,16 +71,23 @@ function HomeArticles() {
 
 function EFTMIDNav() {
   return (
-    <Stack.Navigator headerMode="none" initialRouteName="EFTMIDScreen">
+    <Stack.Navigator
+      headerMode="none"
+      initialRouteName="EFTMIDScreen"
+      screenOptions={{
+        headerTransparent: true,
+        animationEnabled: true,
+      }}
+    >
       <Stack.Screen
         name="EFTMIDScreen"
         component={EFTMIDScreen}
-        options={{ title: 'EFTM ID' }}
+        options={{ headerTransparent: true, title: 'EFTM ID' }}
       />
       <Stack.Screen
         name="MagicLinkConfirmationScreen"
         component={MagicLinkConfirmationScreen}
-        options={{ title: 'Magic Link Confirmation' }}
+        options={{ headerTransparent: true, title: 'Magic Link Confirmation' }}
       />
     </Stack.Navigator>
   );
@@ -169,6 +177,8 @@ export default function RootAppNavigator() {
         initialRouteName="BottomTabNavigator"
         screenOptions={{
           headerTintColor: theme.colors.strong,
+          headerTransparent: true,
+          animationEnabled: true,
         }}
       >
         <Stack.Screen

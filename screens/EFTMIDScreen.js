@@ -53,7 +53,7 @@ const EFTMIDScreen = props => {
 
         <View style={styles.View_8M} pointerEvents={'auto'}>
           <Text style={[styles.Text_8a, { color: theme.colors.strong }]}>
-            {Constants['eftmID']}
+            {Constants['eftmID'].toString()}
           </Text>
 
           <Text style={[styles.TextDb, { color: theme.colors.medium }]}>
@@ -62,7 +62,7 @@ const EFTMIDScreen = props => {
             }
           </Text>
           <>
-            {!Constants['activated'] ? null : (
+            {Constants['activated'] ? null : (
               <View pointerEvents={'auto'}>
                 <TextField
                   onChangeText={firstName => {
@@ -77,7 +77,7 @@ const EFTMIDScreen = props => {
                   type={'underline'}
                   value={firstName}
                   autoCapitalize={'words'}
-                  returnKeyType={'next'}
+                  returnKeyType={'done'}
                 />
                 <TextField
                   onChangeText={lastName => {
@@ -142,11 +142,21 @@ const EFTMIDScreen = props => {
                   onPress={async () => {
                     try {
                       await requestVerificationCodePOST.mutateAsync({
-                        email: email,
+                        email: email.toString(),
                         emailORsms: 'sms',
                         phone: phoneNumber,
                       });
-                      navigation.navigate('RootNavigator');
+                      navigation.navigate('EFTMIDNav', {
+                        screen: 'MagicLinkConfirmationScreen',
+                        params: {
+                          firstName: firstName,
+                          method: 'sms',
+                          state: pickerValue,
+                          phoneNumber: phoneNumber,
+                          email: email,
+                          lastName: lastName,
+                        },
+                      });
                     } catch (err) {
                       console.error(err);
                     }

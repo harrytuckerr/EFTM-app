@@ -28,7 +28,7 @@
     },
     "android": {
       "versionCode": 1,
-      "package": "com.eftm.app",
+      "package": "com.eftmweb",
       "permissions": [
         "READ_PHONE_STATE"
       ]

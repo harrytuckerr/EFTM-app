@@ -92,8 +92,7 @@ const MagicLinkConfirmationScreen = props => {
             ]}
           >
             {'Go Back '}
-            {JSON.stringify(Constants['eftmID'])}{' '}
-            {JSON.stringify(Constants['test'])}
+            {JSON.stringify(Constants['eftmID'])} {Constants['test']}
           </Text>
         </Touchable>
 
@@ -101,7 +100,7 @@ const MagicLinkConfirmationScreen = props => {
           onPress={async () => {
             try {
               const EFTMID = await requestEFTMIDPOST.mutateAsync({
-                email: JSON.stringify(props.route?.params?.email ?? ''),
+                email: props.route?.params?.email ?? '',
                 firstname: props.route?.params?.firstName ?? '',
                 lastname: props.route?.params?.lastName ?? '',
                 phonenumber: props.route?.params?.phoneNumber ?? '',
@@ -115,11 +114,11 @@ const MagicLinkConfirmationScreen = props => {
               });
               setGlobalVariableValue({
                 key: 'activated',
-                value: 'Truthy',
+                value: true,
               });
               setGlobalVariableValue({
                 key: 'test',
-                value: EFTMID,
+                value: JSON.stringify(EFTMID),
               });
               navigation.navigate('EFTMIDScreen');
             } catch (err) {
