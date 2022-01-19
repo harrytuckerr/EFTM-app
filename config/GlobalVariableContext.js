@@ -7,6 +7,7 @@ const DeviceVariables = {
   States: ['NSW', 'QLD', 'VIC', 'SA', 'WA', 'ACT', 'TAS', 'NT'],
   eftmID: 'Register for your EFTM ID',
   activated: false,
+  onesignalid: '',
   technotifications: 0,
   carsnotifications: 0,
   lifestylenotifications: 0,

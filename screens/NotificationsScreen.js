@@ -346,7 +346,12 @@ const NotificationsScreen = props => {
                   yesnohighlights: Constants['highlightsnotifications'],
                   yesnolifestyle: Constants['lifestylenotifications'],
                 });
-                console.log(Results);
+                const onesignalID = Results.id;
+                console.log(onesignalID);
+                setGlobalVariableValue({
+                  key: 'onesignalid',
+                  value: onesignalID,
+                });
               } catch (err) {
                 console.error(err);
               }
