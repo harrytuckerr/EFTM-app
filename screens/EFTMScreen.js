@@ -805,7 +805,7 @@ const styles = StyleSheet.create({
   ImageVh: {
     width: 180,
     height: 45,
-    marginTop: 40,
+    marginTop: 50,
     marginLeft: 10,
   },
   Text_3w: {

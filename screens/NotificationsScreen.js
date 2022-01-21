@@ -1,5 +1,4 @@
 import React from 'react';
-import * as OneSignalApi from '../apis/OneSignalApi.js';
 import * as CustomCode from '../components.js';
 import * as GlobalVariables from '../config/GlobalVariableContext';
 import {
@@ -17,14 +16,33 @@ const NotificationsScreen = props => {
   const Variables = Constants;
 
   const setGlobalVariableValue = GlobalVariables.useSetValue();
-  // Gets device model
-  const GetDeviceID = () => {
-    let deviceId = CustomCode.DeviceInfo.getDeviceId();
+  const sendTags = (tech, cars, lifestyle, bignews, highlights) => {
+    // Type the code for the body of your function or hook here.
+    // Functions can be triggered via Button/Touchable actions.
+    // Hooks are run per ReactJS rules.
+    /* String line breaks are accomplished with backticks ( example: `line one
+line two` ) and will not work with special characters inside of quotes ( example: "line one line two" ) */
+    CustomCode.OneSignal.sendTags({
+      tech: tech,
+      cars: cars,
+      lifestyle: lifestyle,
+      bignews: bignews,
+      highlights: highlights,
+    });
+  };
+
+  const boolToInt = VariableName => {
+    // Type the code for the body of your function or hook here.
+    // Functions can be triggered via Button/Touchable actions.
+    // Hooks are run per ReactJS rules.
+    var original = +VariableName;
+
+    return original.toString();
+    /* String line breaks are accomplished with backticks ( example: `line one
+line two` ) and will not work with special characters inside of quotes ( example: "line one line two" ) */
   };
 
   const { theme } = props;
-
-  const addAndroidDevicePOST = OneSignalApi.useAddAndroidDevicePOST();
 
   const [BigNewsswitchValue, setBigNewsswitchValue] = React.useState(false);
   const [CarsswitchValue, setCarsswitchValue] = React.useState(false);
@@ -38,7 +56,7 @@ const NotificationsScreen = props => {
   return (
     <ScreenContainer hasSafeArea={true} scrollable={false}>
       <View style={styles.ViewnM} pointerEvents={'auto'}>
-        <View>
+        <View style={styles.Viewbe}>
           <View style={styles.ViewLv}>
             <Text
               style={[
@@ -101,16 +119,23 @@ const NotificationsScreen = props => {
                     try {
                       setTechswitchValue(TechswitchValue);
                       const TestV = setGlobalVariableValue({
-                        key: 'technotifications',
+                        key: 'Technotifications',
                         value: TechswitchValue,
                       });
-                      console.log(Constants['bignewsnotifications']);
+                      console.log(boolToInt(TechswitchValue));
+                      sendTags(
+                        boolToInt(TechswitchValue),
+                        boolToInt(CarsswitchValue),
+                        boolToInt(LifestyleswitchValue),
+                        boolToInt(BigNewsswitchValue),
+                        boolToInt(highlightsswitchValue)
+                      );
                     } catch (err) {
                       console.error(err);
                     }
                   }}
                   activeTrackColor={theme.colors.background_blue}
-                  defaultValue={Constants['technotifications']}
+                  defaultValue={Constants['Technotifications']}
                 />
               </View>
             </Touchable>
@@ -153,16 +178,23 @@ const NotificationsScreen = props => {
                     try {
                       setCarsswitchValue(CarsswitchValue);
                       const TestV = setGlobalVariableValue({
-                        key: 'carsnotifications',
+                        key: 'Carsnotifications',
                         value: CarsswitchValue,
                       });
-                      console.log(Constants['bignewsnotifications']);
+                      console.log(Constants['Carsnotifications']);
+                      sendTags(
+                        boolToInt(TechswitchValue),
+                        boolToInt(CarsswitchValue),
+                        boolToInt(LifestyleswitchValue),
+                        boolToInt(BigNewsswitchValue),
+                        boolToInt(highlightsswitchValue)
+                      );
                     } catch (err) {
                       console.error(err);
                     }
                   }}
                   activeTrackColor={theme.colors.background_green}
-                  defaultValue={Constants['carsnotifications']}
+                  defaultValue={Constants['Carsnotifications']}
                 />
               </View>
             </Touchable>
@@ -205,16 +237,23 @@ const NotificationsScreen = props => {
                     try {
                       setLifestyleswitchValue(LifestyleswitchValue);
                       const TestV = setGlobalVariableValue({
-                        key: 'lifestylenotifications',
+                        key: 'Lifestylenotifications',
                         value: LifestyleswitchValue,
                       });
-                      console.log(Constants['lifestylenotifications']);
+                      console.log(Constants['Lifestylenotifications']);
+                      sendTags(
+                        boolToInt(TechswitchValue),
+                        boolToInt(CarsswitchValue),
+                        boolToInt(LifestyleswitchValue),
+                        boolToInt(BigNewsswitchValue),
+                        boolToInt(highlightsswitchValue)
+                      );
                     } catch (err) {
                       console.error(err);
                     }
                   }}
                   activeTrackColor={theme.colors.yellow_background}
-                  defaultValue={Constants['lifestylenotifications']}
+                  defaultValue={Constants['Lifestylenotifications']}
                 />
               </View>
             </Touchable>
@@ -259,15 +298,22 @@ const NotificationsScreen = props => {
                     try {
                       setHighlightsswitchValue(highlightsswitchValue);
                       const TestV = setGlobalVariableValue({
-                        key: 'highlightsnotifications',
+                        key: 'Highlightsnotifications',
                         value: highlightsswitchValue,
                       });
-                      console.log(Constants['highlightsnotifications']);
+                      console.log(Constants['Highlightsnotifications']);
+                      sendTags(
+                        boolToInt(TechswitchValue),
+                        boolToInt(CarsswitchValue),
+                        boolToInt(LifestyleswitchValue),
+                        boolToInt(BigNewsswitchValue),
+                        boolToInt(LifestyleswitchValue)
+                      );
                     } catch (err) {
                       console.error(err);
                     }
                   }}
-                  defaultValue={Constants['highlightsnotifications']}
+                  defaultValue={Constants['Highlightsnotifications']}
                 />
               </View>
             </Touchable>
@@ -304,7 +350,7 @@ const NotificationsScreen = props => {
                       {
                         'Get notified as soon as big, breaking news happens. \n '
                       }
-                      {Constants['bignewsnotifications'] === 'false'
+                      {Constants['Bignewsnotifications'] === 'false'
                         ? false
                         : true}
                     </Text>
@@ -315,15 +361,23 @@ const NotificationsScreen = props => {
                     try {
                       setBigNewsswitchValue(BigNewsswitchValue);
                       const TestV = setGlobalVariableValue({
-                        key: 'bignewsnotifications',
+                        key: 'Bignewsnotifications',
                         value: BigNewsswitchValue,
                       });
-                      console.log(Constants['bignewsnotifications']);
+                      console.log(Constants['Bignewsnotifications']);
+                      sendTags(
+                        boolToInt(TechswitchValue),
+                        boolToInt(CarsswitchValue),
+                        boolToInt(LifestyleswitchValue),
+                        boolToInt(BigNewsswitchValue),
+                        boolToInt(highlightsswitchValue)
+                      );
                     } catch (err) {
                       console.error(err);
                     }
                   }}
-                  defaultValue={Constants['bignewsnotifications']}
+                  activeTrackColor={theme.colors.strong}
+                  defaultValue={Constants['Bignewsnotifications']}
                 />
               </View>
             </Touchable>
@@ -334,35 +388,32 @@ const NotificationsScreen = props => {
             />
           </ScrollView>
         </View>
-
-        <View style={styles.ViewzW}>
-          <ButtonSolid
-            onPress={async () => {
-              try {
-                const Results = await addAndroidDevicePOST.mutateAsync({
-                  deviceOS: 'Android',
-                  yesnobignews: Constants['bignewsnotifications'],
-                  yesnocars: Constants['carsnotifications'],
-                  yesnohighlights: Constants['highlightsnotifications'],
-                  yesnolifestyle: Constants['lifestylenotifications'],
-                });
-                const onesignalID = Results.id;
-                console.log(onesignalID);
-                setGlobalVariableValue({
-                  key: 'onesignalid',
-                  value: onesignalID,
-                });
-              } catch (err) {
-                console.error(err);
-              }
-            }}
-            style={[
-              styles.ButtonSolidIa,
-              { backgroundColor: theme.colors.strong },
-            ]}
-            title={'Save Notification Settings'}
-          />
-        </View>
+        <>
+          {!Constants['test'] ? null : (
+            <View style={styles.ViewzW}>
+              <ButtonSolid
+                onPress={() => {
+                  try {
+                    sendTags(
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined
+                    );
+                  } catch (err) {
+                    console.error(err);
+                  }
+                }}
+                style={[
+                  styles.ButtonSolidIa,
+                  { backgroundColor: theme.colors.strong },
+                ]}
+                title={'Save Notification Settings'}
+              />
+            </View>
+          )}
+        </>
       </View>
     </ScreenContainer>
   );
@@ -500,6 +551,9 @@ const styles = StyleSheet.create({
     paddingRight: 32,
     paddingTop: 8,
     paddingBottom: 8,
+  },
+  Viewbe: {
+    marginTop: 10,
   },
   ButtonSolidIa: {
     borderRadius: 8,

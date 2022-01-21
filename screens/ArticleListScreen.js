@@ -371,6 +371,7 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     paddingBottom: 4,
+    marginTop: 50,
   },
   Textz1: {
     fontFamily: 'PoppinsSemiBold',

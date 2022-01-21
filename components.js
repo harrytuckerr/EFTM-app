@@ -17,3 +17,17 @@ export { moment };
 
 import { decode } from 'html-entities';
 export { decode };
+
+import OneSignal from 'react-native-onesignal';
+export { OneSignal };
+
+export { useValues, useSetValue } from './config/GlobalVariableContext';
+
+export function notifications() {
+  const variables = GlobalVariableContext.useValues();
+  const tech = variables.Technotifications;
+  const cars = variables.Carsnotifications;
+  const lifestyle = variables.Lifestylenotifications;
+  const bignews = variables.Bignewsnotifications;
+  const highlights = variables.Highlightsnotifications;
+}
