@@ -82,7 +82,7 @@ const ArticleListScreen = props => {
       >
         <RetrievePostsApi.FetchCategoryOffsetPostsGET
           category={props.route?.params?.categoryNumber ?? 7}
-          numberofposts={5}
+          numberofposts={2}
         >
           {({ loading, error, data, doFetch }) => {
             const fetchData = data;
@@ -371,7 +371,7 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     paddingBottom: 4,
-    marginTop: 50,
+    marginTop: 20,
   },
   Textz1: {
     fontFamily: 'PoppinsSemiBold',

@@ -141,11 +141,6 @@ const EFTMIDScreen = props => {
                 <ButtonSolid
                   onPress={async () => {
                     try {
-                      await requestVerificationCodePOST.mutateAsync({
-                        email: email.toString(),
-                        emailORsms: 'sms',
-                        phone: phoneNumber,
-                      });
                       navigation.navigate('EFTMIDNav', {
                         screen: 'MagicLinkConfirmationScreen',
                         params: {
@@ -156,6 +151,11 @@ const EFTMIDScreen = props => {
                           email: email,
                           lastName: lastName,
                         },
+                      });
+                      await requestVerificationCodePOST.mutateAsync({
+                        email: email.toString(),
+                        emailORsms: 'sms',
+                        phone: phoneNumber,
                       });
                     } catch (err) {
                       console.error(err);

@@ -641,6 +641,7 @@ const EFTMScreen = props => {
             showsVerticalScrollIndicator={false}
             bounces={true}
             horizontal={true}
+            showsHorizontalScrollIndicator={false}
           >
             <View
               style={[styles.ViewAL, { borderRadius: 25 }]}
