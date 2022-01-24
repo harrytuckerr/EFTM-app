@@ -1,5 +1,6 @@
 {
   "expo": {
+    "jsEngine": "hermes",
     "name": "EFTM",
     "slug": "eftm",
     "scheme": "eftm",
@@ -10,7 +11,7 @@
       "android",
       "web"
     ],
-    "version": "1.0.0",
+    "version": "0.5.3",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "splash": {
@@ -22,19 +23,41 @@
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "com.draftbit.untitledapp",
+      "bundleIdentifier": "com.eftm.app",
       "supportsTablet": false,
       "buildNumber": "1.0.0"
     },
     "android": {
-      "versionCode": 1,
-      "package": "com.eftmweb",
-      "permissions": [
-        "READ_PHONE_STATE"
-      ]
+      "versionCode": 3,
+      "package": "com.eftm.app",
+      "intentFilters": [
+  {
+    "action": "VIEW",
+    "data": [
+      {
+        "scheme": "https",
+        "host": "*.eftm.com",
+        "pathPrefix": "/"
+      }
+    ],
+    "category": [
+      "BROWSABLE",
+      "DEFAULT"
+    ]
+  }
+],
     },
+    "androidStatusBar": {
+            "translucent": true
+        },
     "web": {
       "themeColor": "#000000"
+    },
+    "plugins": [
+      "onesignal-expo-plugin"
+    ],
+    "extra": {
+      "oneSignalAppId": "c93f5d78-73ff-4a87-8e82-45ccf668c290"
     },
     "notification": {
       "androidMode": "default"
