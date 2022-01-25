@@ -3,12 +3,18 @@ import * as EFTMIDApi from '../apis/EFTMIDApi.js';
 import * as GlobalVariables from '../config/GlobalVariableContext';
 import {
   Button,
+  ButtonSolid,
   ScreenContainer,
-  TextField,
   Touchable,
   withTheme,
 } from '@draftbit/ui';
-import { KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native';
+import {
+  KeyboardAvoidingView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 
 const MagicLinkConfirmationScreen = props => {
   const Constants = GlobalVariables.useValues();
@@ -21,7 +27,7 @@ const MagicLinkConfirmationScreen = props => {
 
   const requestEFTMIDPOST = EFTMIDApi.useRequestEFTMIDPOST();
 
-  const [confirmationCode, setConfirmationCode] = React.useState('');
+  const [textInputValue, setTextInputValue] = React.useState('');
 
   return (
     <ScreenContainer scrollable={true} hasSafeArea={true}>
@@ -32,119 +38,143 @@ const MagicLinkConfirmationScreen = props => {
         keyboardVerticalOffset={80}
       >
         <View style={styles.Viewfa} pointerEvents={'auto'}>
-          <Text
-            style={[
-              theme.typography.headline4,
-              styles.Textlt,
-              { color: theme.colors.strong },
-            ]}
-          >
+          <Text style={[styles.Textlt, { color: theme.colors.strong }]}>
             {'Confirm your account'}
           </Text>
 
-          <Text
-            style={[
-              theme.typography.body1,
-              styles.Text_7M,
-              { color: theme.colors.strong },
-            ]}
-          >
+          <Text style={[styles.Text_7M, { color: theme.colors.strong }]}>
             {
               "We've sent a confirmation code to your phone. Copy the code into the box below to confirm your EFTM ID."
             }
           </Text>
-          <TextField
-            onChangeText={confirmationCode => {
+          <TextInput
+            onChangeText={textInputValue => {
               try {
-                setConfirmationCode(confirmationCode);
+                setTextInputValue(textInputValue);
               } catch (err) {
                 console.error(err);
               }
             }}
-            style={[styles.TextFieldc1, { borderColor: theme.colors.light }]}
-            type={'underline'}
-            label={'Confirmation Code'}
+            style={[styles.TextInputlv, { borderColor: theme.colors.light }]}
+            value={textInputValue}
+            placeholder={'Your confirmation code'}
             keyboardType={'numeric'}
-            value={confirmationCode}
-            error={false}
-            returnKeyType={'send'}
-            returnKeyLabel={'Confirm'}
+            autoFocus={true}
+            returnKeyType={'done'}
+            textContentType={'none'}
           />
         </View>
-      </KeyboardAvoidingView>
 
-      <View style={styles.ViewyN} pointerEvents={'auto'}>
-        <Touchable
-          onPress={() => {
-            try {
-              navigation.goBack();
-            } catch (err) {
-              console.error(err);
-            }
-          }}
-          style={styles.Touchableqf}
-        >
-          <Text
-            style={[
-              theme.typography.button,
-              styles.TextoK,
-              { color: theme.colors.strong },
-            ]}
+        <View style={styles.ViewyN} pointerEvents={'auto'}>
+          <Touchable
+            onPress={() => {
+              try {
+                navigation.goBack();
+              } catch (err) {
+                console.error(err);
+              }
+            }}
+            style={styles.Touchableqf}
           >
-            {'Go Back '}
-            {JSON.stringify(Constants['eftmID'])} {Constants['test']}
-          </Text>
-        </Touchable>
-
-        <Button
-          onPress={async () => {
-            try {
-              const EFTMID = await requestEFTMIDPOST.mutateAsync({
-                email: props.route?.params?.email ?? '',
-                firstname: props.route?.params?.firstName ?? '',
-                lastname: props.route?.params?.lastName ?? '',
-                phonenumber: props.route?.params?.phoneNumber ?? '',
-                state: props.route?.params?.state ?? '',
-                verificationcode: confirmationCode,
-              });
-              const confirmedID = EFTMID.eftmID;
-              setGlobalVariableValue({
-                key: 'eftmID',
-                value: confirmedID,
-              });
-              setGlobalVariableValue({
-                key: 'activated',
-                value: true,
-              });
-              setGlobalVariableValue({
-                key: 'test',
-                value: JSON.stringify(EFTMID),
-              });
-              navigation.navigate('EFTMIDScreen');
-            } catch (err) {
-              console.error(err);
+            <>
+              {!Constants['activated'] ? null : (
+                <Text
+                  style={[
+                    styles.TextoK,
+                    { color: theme.colors.custom_rgb27_215_96 },
+                  ]}
+                >
+                  {'Success!'}
+                </Text>
+              )}
+            </>
+            <>
+              {Constants['activated'] ? null : (
+                <Text style={[styles.TextgP, { color: theme.colors.strong }]}>
+                  {'Go Back'}
+                </Text>
+              )}
+            </>
+          </Touchable>
+          <>
+            {!Constants['isLoading'] ? null : (
+              <ButtonSolid
+                style={[
+                  styles.ButtonSolid_9X,
+                  { backgroundColor: theme.colors.strong },
+                ]}
+                title={'Confirming...'}
+                loading={true}
+              />
+            )}
+          </>
+          <>
+            {Constants['isLoading'] ? null : (
+              <Button
+                onPress={async () => {
+                  try {
+                    setGlobalVariableValue({
+                      key: 'isLoading',
+                      value: true,
+                    });
+                    const EFTMID = await requestEFTMIDPOST.mutateAsync({
+                      email: props.route?.params?.email ?? '',
+                      firstname: props.route?.params?.firstName ?? '',
+                      lastname: props.route?.params?.lastName ?? '',
+                      phonenumber: props.route?.params?.phoneNumber ?? '',
+                      state: props.route?.params?.state ?? '',
+                      verificationcode: textInputValue,
+                    });
+                    const confirmedID = EFTMID.eftmID;
+                    setGlobalVariableValue({
+                      key: 'eftmID',
+                      value: confirmedID,
+                    });
+                    setGlobalVariableValue({
+                      key: 'activated',
+                      value: true,
+                    });
+                    setGlobalVariableValue({
+                      key: 'test',
+                      value: JSON.stringify(EFTMID),
+                    });
+                    navigation.navigate('EFTMIDScreen');
+                    setGlobalVariableValue({
+                      key: 'firstName',
+                      value: props.route?.params?.firstName ?? '',
+                    });
+                    setGlobalVariableValue({
+                      key: 'mobileNumber',
+                      value: props.route?.params?.phoneNumber ?? '',
+                    });
+                    setGlobalVariableValue({
+                      key: 'email',
+                      value: props.route?.params?.email ?? '',
+                    });
+                    setGlobalVariableValue({
+                      key: 'state',
+                      value: props.route?.params?.state ?? '',
+                    });
+                  } catch (err) {
+                    console.error(err);
+                  }
+                }}
+                style={styles.ButtonS7}
+                type={'solid'}
+                color={theme.colors.strong}
+                disabled={false}
+              >
+                {'Confirm Account'}
+              </Button>
+            )}
+          </>
+          <Text style={[styles.TextFR, { color: theme.colors.light }]}>
+            {
+              'By registering for an EFTM ID you agree to our Terms of Service, Privacy Policy and Cookie Policy. '
             }
-          }}
-          style={styles.ButtonS7}
-          type={'solid'}
-          color={theme.colors.strong}
-          disabled={false}
-        >
-          {'Confirm Account'}
-        </Button>
-
-        <Text
-          style={[
-            theme.typography.caption,
-            styles.TextFR,
-            { color: theme.colors.light },
-          ]}
-        >
-          {
-            'By registering for an EFTM ID you agree to our Terms of Service, Privacy Policy and Cookie Policy. '
-          }
-        </Text>
-      </View>
+          </Text>
+        </View>
+      </KeyboardAvoidingView>
     </ScreenContainer>
   );
 };
@@ -152,15 +182,24 @@ const MagicLinkConfirmationScreen = props => {
 const styles = StyleSheet.create({
   Textlt: {
     textAlign: 'center',
+    fontFamily: 'PoppinsBold',
+    fontSize: 24,
   },
   Text_7M: {
     marginTop: 8,
     textAlign: 'center',
+    fontFamily: 'PoppinsRegular',
   },
-  TextFieldc1: {
-    marginTop: 20,
-    marginBottom: 32,
+  TextInputlv: {
     borderBottomWidth: 1,
+    paddingLeft: 8,
+    paddingRight: 8,
+    paddingTop: 8,
+    paddingBottom: 8,
+    borderRadius: 0,
+    width: '100%',
+    marginTop: 32,
+    fontFamily: 'PoppinsLight',
   },
   Viewfa: {
     marginLeft: 16,
@@ -168,15 +207,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 16,
   },
-  KeyboardAvoidingViewYM: {
-    justifyContent: 'space-between',
-    flex: 1,
-  },
   TextoK: {
     textAlign: 'center',
+    fontFamily: 'PoppinsSemiBold',
+    fontSize: 18,
+  },
+  TextgP: {
+    textAlign: 'center',
+    fontFamily: 'PoppinsSemiBold',
   },
   Touchableqf: {
-    marginBottom: 24,
+    marginBottom: 16,
+  },
+  ButtonSolid_9X: {
+    borderRadius: 8,
+    fontFamily: 'PoppinsSemiBold',
+    textAlign: 'center',
   },
   ButtonS7: {
     height: 48,
@@ -185,12 +231,18 @@ const styles = StyleSheet.create({
     width: '100%',
     marginTop: 16,
     textAlign: 'center',
+    fontFamily: 'PoppinsLight',
   },
   ViewyN: {
     marginLeft: 16,
     marginRight: 16,
-    paddingBottom: 24,
+    paddingBottom: 16,
     justifyContent: 'flex-end',
+    marginTop: 16,
+  },
+  KeyboardAvoidingViewYM: {
+    justifyContent: 'space-between',
+    flex: 1,
   },
 });
 

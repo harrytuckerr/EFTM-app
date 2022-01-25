@@ -4,6 +4,9 @@ import AppLoading from 'expo-app-loading';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const DeviceVariables = {
+  firstName: '',
+  email: '',
+  state: '',
   States: ['NSW', 'QLD', 'VIC', 'SA', 'WA', 'ACT', 'TAS', 'NT'],
   eftmID: 'Register for your EFTM ID',
   Highlightsnotifications: true,
@@ -13,8 +16,10 @@ const DeviceVariables = {
   Carsnotifications: false,
   Lifestylenotifications: false,
   Bignewsnotifications: 0,
+  mobileNumber: '',
 };
 const AppVariables = {
+  isLoading: false,
   article: '',
   test: '',
   loadmorePage: false,

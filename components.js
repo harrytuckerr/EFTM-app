@@ -4,14 +4,15 @@
 // 'react' is required.
 import React from 'react';
 import { Text } from 'react-native';
-import { RefreshControl, ScrollView, StyleSheet } from 'react-native';
+import {
+  RefreshControl,
+  Dimensions,
+  ScrollView,
+  StyleSheet,
+  Flatlist,
+  View,
+} from 'react-native';
 
-// Define and export your components as named exports here.
-// You can reference them within a Custom Code block
-// as <CustomCode.MyTextComponent />
-
-// Uncomment below to create your first component
-// export const MyTextComponent = () => <Text>Hello world!</Text>;
 import moment from 'moment';
 export { moment };
 
@@ -30,4 +31,40 @@ export function notifications() {
   const lifestyle = variables.Lifestylenotifications;
   const bignews = variables.Bignewsnotifications;
   const highlights = variables.Highlightsnotifications;
+  const email = variables.Email;
+  const mobile = variables.MobileNumber;
+  const location = variables.State;
+  const firstName = variables.Firstname;
 }
+
+const wait = timeout => {
+  return new Promise(resolve => setTimeout(resolve, timeout));
+};
+
+export const refreshController = ({ children }) => {
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    wait(2000).then(() => setRefreshing(false));
+  }, []);
+
+  return (
+    <ScrollView
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
+      bounces={true}
+      showsVerticalScrollIndicator={false}
+    >
+      {children}
+    </ScrollView>
+  );
+};
+
+export const viewWidth = ({ children }) => {
+  var width = Dimensions.get('window').width; //full width
+  var height = Dimensions.get('window').height; //full height
+
+  return <View width={width}>{children}</View>;
+};

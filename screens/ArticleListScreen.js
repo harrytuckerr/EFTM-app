@@ -348,8 +348,8 @@ const ArticleListScreen = props => {
 
 const styles = StyleSheet.create({
   IconButtonHK: {
-    marginTop: 16,
-    marginLeft: 8,
+    marginTop: 14,
+    marginLeft: 16,
     zIndex: 2,
   },
   Textix: {
@@ -361,7 +361,7 @@ const styles = StyleSheet.create({
   ViewRm: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft: -40,
+    marginLeft: -48,
     width: '100%',
     zIndex: 1,
   },
@@ -371,7 +371,6 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     paddingBottom: 4,
-    marginTop: 20,
   },
   Textz1: {
     fontFamily: 'PoppinsSemiBold',
@@ -380,6 +379,7 @@ const styles = StyleSheet.create({
   },
   TextPb: {
     textAlign: 'left',
+    fontFamily: 'PoppinsLight',
   },
   Viewxf: {
     paddingLeft: 16,

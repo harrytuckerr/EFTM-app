@@ -8,13 +8,13 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import theme from './themes/DraftbitTheme.js';
 
 import ArticleListScreen from './screens/ArticleListScreen';
+import AskTrevScreen from './screens/AskTrevScreen';
 import EFTMIDScreen from './screens/EFTMIDScreen';
 import EFTMScreen from './screens/EFTMScreen';
 import MagicLinkConfirmationScreen from './screens/MagicLinkConfirmationScreen';
 import NotificationsScreen from './screens/NotificationsScreen';
 import PodcastSeriesPageScreen from './screens/PodcastSeriesPageScreen';
 import WidgetsScreen from './screens/WidgetsScreen';
-import WinScreen from './screens/WinScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -77,6 +77,7 @@ function EFTMIDNav() {
       screenOptions={{
         headerTransparent: true,
         animationEnabled: true,
+        keyboardHandlingEnabled: false,
       }}
     >
       <Stack.Screen
@@ -113,7 +114,7 @@ function BottomTabNavigator() {
         options={{
           tabBarIcon: ({ focused, color }) => (
             <Icon
-              name="Entypo/home"
+              name="Ionicons/home-outline"
               size={25}
               color={focused ? theme.colors.strong : theme.colors.light}
             />
@@ -127,7 +128,7 @@ function BottomTabNavigator() {
         options={{
           tabBarIcon: ({ focused, color }) => (
             <Icon
-              name="Ionicons/happy"
+              name="Ionicons/happy-outline"
               size={25}
               color={focused ? theme.colors.strong : theme.colors.light}
             />
@@ -136,18 +137,17 @@ function BottomTabNavigator() {
         }}
       />
       <Tab.Screen
-        name="WidgetsScreen"
-        component={WidgetsScreen}
+        name="AskTrevScreen"
+        component={AskTrevScreen}
         options={{
-          title: 'Widgets',
+          title: 'AskTrev',
           tabBarIcon: ({ focused, color }) => (
             <Icon
-              name="MaterialCommunityIcons/widgets"
+              name="MaterialCommunityIcons/account-question-outline"
               size={25}
               color={focused ? theme.colors.strong : theme.colors.light}
             />
           ),
-          tabBarLabel: 'Widgets',
         }}
       />
       <Tab.Screen
@@ -182,9 +182,9 @@ export default function RootAppNavigator() {
         }}
       >
         <Stack.Screen
-          name="WinScreen"
-          component={WinScreen}
-          options={{ title: 'Win' }}
+          name="WidgetsScreen"
+          component={WidgetsScreen}
+          options={{ title: 'Widgets' }}
         />
         <Stack.Screen
           name="BottomTabNavigator"

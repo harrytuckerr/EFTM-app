@@ -46,8 +46,8 @@ const EFTMIDScreen = props => {
         <View style={styles.ViewOL} pointerEvents={'auto'}>
           <Image
             style={styles.Imagetu}
-            source={Images.EFTMHIRESLOGO2016}
             resizeMode={'contain'}
+            source={Images.Eftmblack}
           />
         </View>
 
@@ -77,7 +77,7 @@ const EFTMIDScreen = props => {
                   type={'underline'}
                   value={firstName}
                   autoCapitalize={'words'}
-                  returnKeyType={'done'}
+                  returnKeyType={'next'}
                 />
                 <TextField
                   onChangeText={lastName => {

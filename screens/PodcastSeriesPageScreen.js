@@ -228,6 +228,7 @@ const styles = StyleSheet.create({
   View_0Q: {
     alignContent: 'center',
     marginLeft: 16,
+    flexDirection: 'row',
   },
   Imageaf: {
     height: 150,
@@ -279,7 +280,7 @@ const styles = StyleSheet.create({
   },
   TextI8: {
     marginTop: 10,
-    marginRight: 20,
+    marginRight: 16,
   },
   Viewii: {
     marginLeft: 20,
