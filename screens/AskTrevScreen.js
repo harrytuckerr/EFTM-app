@@ -104,8 +104,51 @@ line two` ) and will not work with special characters inside of quotes ( example
             }
           </Text>
         </View>
-
-        <View pointerEvents={'auto'}>
+        <>
+          {Constants['activated'] ? null : (
+            <View pointerEvents={'auto'}>
+              <TextField
+                onChangeText={name => {
+                  try {
+                    setName(name);
+                  } catch (err) {
+                    console.error(err);
+                  }
+                }}
+                placeholder={'Name'}
+                type={'underline'}
+                value={name}
+              />
+              <TextField
+                onChangeText={phoneNumber => {
+                  try {
+                    setPhoneNumber(phoneNumber);
+                  } catch (err) {
+                    console.error(err);
+                  }
+                }}
+                placeholder={'Mobile Number'}
+                type={'underline'}
+                value={phoneNumber}
+                keyboardType={'phone-pad'}
+              />
+              <TextField
+                onChangeText={suburb => {
+                  try {
+                    setSuburb(suburb);
+                  } catch (err) {
+                    console.error(err);
+                  }
+                }}
+                placeholder={'City'}
+                type={'underline'}
+                value={suburb}
+                keyboardType={'default'}
+              />
+            </View>
+          )}
+        </>
+        <View style={styles.ViewCV} pointerEvents={'auto'}>
           <TextInput
             onChangeText={questionInputValue => {
               try {
@@ -126,7 +169,8 @@ line two` ) and will not work with special characters inside of quotes ( example
             clearTextOnFocus={false}
             textBreakStrategy={'simple'}
             textContentType={'none'}
-            numberOfLines={10}
+            returnKeyType={'send'}
+            placeholderTextColor={theme.colors.light}
           />
         </View>
         <>
@@ -134,14 +178,6 @@ line two` ) and will not work with special characters inside of quotes ( example
             <ButtonSolid
               onPress={() => {
                 try {
-                  const MessageDetails = createMessage(
-                    undefined,
-                    undefined,
-                    undefined,
-                    undefined,
-                    questionInputValue
-                  );
-                  console.log(MessageDetails);
                   console.log(questionInputValue);
                   Linking.openURL(
                     `mailto:editor@eftm.com?subject=New Ask Trev&body=${questionInputValue}%0D%0A%0D%0AFrom,%0D%0A ${Constants['firstName']}%0D%0A%0D%0AMobile: ${Constants['mobileNumber']}%0D%0AState: ${Constants['state']}`
@@ -163,16 +199,8 @@ line two` ) and will not work with special characters inside of quotes ( example
             <ButtonSolid
               onPress={() => {
                 try {
-                  const noIDMessageDetails = noIDCreateMessage(
-                    questionInputValue,
-                    Email,
-                    phoneNumber,
-                    name,
-                    suburb
-                  );
-                  console.log(noIDMessageDetails);
                   Linking.openURL(
-                    `mailto:editor@eftm.com?subject=New Ask Trev&body=${noIDMessageDetails}%0D%0A%0D%0AFrom,%0D%0A ${name}%0D%0A%0D%0AMobile: ${phoneNumber}%0D%0AState: ${suburb}`
+                    `mailto:editor@eftm.com?subject=New Ask Trev&body=%0D%0A%0D%0AFrom,%0D%0A ${name}%0D%0A%0D%0AMobile: ${phoneNumber}%0D%0AState: ${suburb}`
                   );
                 } catch (err) {
                   console.error(err);
@@ -209,18 +237,21 @@ const styles = StyleSheet.create({
   },
   Viewxz: {
     alignItems: 'center',
+    marginBottom: 16,
   },
   TextInputph: {
-    borderLeftWidth: 1,
-    borderRightWidth: 1,
-    borderTopWidth: 1,
     borderBottomWidth: 1,
-    paddingLeft: 8,
     paddingRight: 8,
     paddingTop: 8,
     paddingBottom: 8,
-    borderRadius: 8,
-    textAlign: 'left',
+    borderRadius: 0,
+    textAlign: 'justify',
+    fontFamily: 'MerriweatherRegular',
+  },
+  ViewCV: {
+    flexWrap: 'wrap',
+    alignContent: 'stretch',
+    marginBottom: 16,
   },
   ButtonSoliduP: {
     borderRadius: 8,
