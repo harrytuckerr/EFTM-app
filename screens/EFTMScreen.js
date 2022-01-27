@@ -119,7 +119,7 @@ const EFTMScreen = props => {
                                         styles.ImageBackgroundZK,
                                         {
                                           borderColor: theme.colors.background,
-                                          borderRadius: 15,
+                                          borderRadius: 10,
                                         },
                                       ]}
                                       source={{

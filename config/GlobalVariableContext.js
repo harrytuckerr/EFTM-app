@@ -12,10 +12,10 @@ const DeviceVariables = {
   Highlightsnotifications: true,
   activated: false,
   onesignalid: '',
-  Technotifications: false,
-  Carsnotifications: false,
-  Lifestylenotifications: false,
-  Bignewsnotifications: 0,
+  Technotifications: true,
+  Carsnotifications: true,
+  Lifestylenotifications: true,
+  Bignewsnotifications: true,
   mobileNumber: '',
 };
 const AppVariables = {

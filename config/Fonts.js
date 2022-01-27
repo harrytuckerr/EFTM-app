@@ -11,7 +11,4 @@ export default {
   PoppinsRegular: {
     uri: 'https://static.draftbit.com/fonts/poppins/PoppinsRegular.ttf',
   },
-  MerriweatherRegular: {
-    uri: 'https://static.draftbit.com/fonts/merriweather/MerriweatherRegular.ttf',
-  },
 };

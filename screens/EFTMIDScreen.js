@@ -141,15 +141,18 @@ const EFTMIDScreen = props => {
                 <ButtonSolid
                   onPress={async () => {
                     try {
-                      navigation.navigate('EFTMIDNav', {
-                        screen: 'MagicLinkConfirmationScreen',
+                      navigation.navigate('BottomTabNavigator', {
+                        screen: 'EFTMIDNav',
                         params: {
-                          firstName: firstName,
-                          method: 'sms',
-                          state: pickerValue,
-                          phoneNumber: phoneNumber,
-                          email: email,
-                          lastName: lastName,
+                          screen: 'MagicLinkConfirmationScreen',
+                          params: {
+                            firstName: firstName,
+                            method: 'sms',
+                            state: pickerValue,
+                            phoneNumber: phoneNumber,
+                            email: email,
+                            lastName: lastName,
+                          },
                         },
                       });
                       await requestVerificationCodePOST.mutateAsync({

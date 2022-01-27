@@ -12,7 +12,8 @@ import {
   Flatlist,
   View,
 } from 'react-native';
-
+import { initializeApp } from 'firebase/app';
+import { getAnalytics } from 'firebase/analytics';
 import moment from 'moment';
 export { moment };
 
@@ -68,3 +69,17 @@ export const viewWidth = ({ children }) => {
 
   return <View width={width}>{children}</View>;
 };
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: 'AIzaSyBLV4ouTgn-bG2_y2xAiQhKC1ynyV5odbg',
+  authDomain: 'eftm-ios-app.firebaseapp.com',
+  projectId: 'eftm-ios-app',
+  storageBucket: 'eftm-ios-app.appspot.com',
+  messagingSenderId: '141611989174',
+  appId: '1:141611989174:web:21862b204d889a2b0fce17',
+  measurementId: 'G-WM5B9QXF1S',
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);

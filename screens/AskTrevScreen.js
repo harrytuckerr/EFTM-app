@@ -87,6 +87,7 @@ line two` ) and will not work with special characters inside of quotes ( example
         style={styles.KeyboardAvoidingViewls}
         enabled={true}
         behavior={'padding'}
+        keyboardVerticalOffset={80}
       >
         <View style={styles.Viewxz} pointerEvents={'auto'}>
           <CircleImage
@@ -106,7 +107,7 @@ line two` ) and will not work with special characters inside of quotes ( example
         </View>
         <>
           {Constants['activated'] ? null : (
-            <View pointerEvents={'auto'}>
+            <View style={styles.Viewv3} pointerEvents={'auto'}>
               <TextField
                 onChangeText={name => {
                   try {
@@ -222,6 +223,7 @@ line two` ) and will not work with special characters inside of quotes ( example
 const styles = StyleSheet.create({
   CircleImageI9: {
     marginTop: 16,
+    marginBottom: 4,
   },
   Text_44: {
     fontSize: 24,
@@ -239,6 +241,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 16,
   },
+  Viewv3: {
+    marginLeft: 16,
+    marginRight: 16,
+  },
   TextInputph: {
     borderBottomWidth: 1,
     paddingRight: 8,
@@ -246,12 +252,16 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
     borderRadius: 0,
     textAlign: 'justify',
-    fontFamily: 'MerriweatherRegular',
+    fontFamily: 'System',
+    fontWeight: '400',
+    fontSize: 16,
   },
   ViewCV: {
     flexWrap: 'wrap',
     alignContent: 'stretch',
     marginBottom: 16,
+    marginLeft: 16,
+    marginRight: 16,
   },
   ButtonSoliduP: {
     borderRadius: 8,

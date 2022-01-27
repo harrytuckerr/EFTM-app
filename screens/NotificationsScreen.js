@@ -375,6 +375,7 @@ const styles = StyleSheet.create({
   },
   TextG7: {
     fontFamily: 'PoppinsRegular',
+    fontSize: 12,
   },
   ViewCp: {
     flexWrap: 'wrap',
@@ -405,6 +406,7 @@ const styles = StyleSheet.create({
   },
   TextGx: {
     fontFamily: 'PoppinsRegular',
+    fontSize: 12,
   },
   ViewVC: {
     flexWrap: 'wrap',
@@ -436,6 +438,7 @@ const styles = StyleSheet.create({
   },
   TextVO: {
     fontFamily: 'PoppinsRegular',
+    fontSize: 12,
   },
   ViewY6: {
     flexWrap: 'wrap',
@@ -467,6 +470,7 @@ const styles = StyleSheet.create({
   },
   Textus: {
     fontFamily: 'PoppinsRegular',
+    fontSize: 12,
   },
   ViewQb: {
     flexWrap: 'wrap',
@@ -498,6 +502,7 @@ const styles = StyleSheet.create({
   },
   TextYb: {
     fontFamily: 'PoppinsRegular',
+    fontSize: 12,
   },
   ViewS2: {
     width: '100%',
