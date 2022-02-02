@@ -23,10 +23,16 @@ const AppVariables = {
   article: '',
   test: '',
   loadmorePage: false,
+  eftmIDError: false,
+  requesting: false,
   loadmore: false,
+  ErrorMessage: '',
+  MFAErrorStatus: false,
   SpotifyPod: 'https://open.spotify.com/show/1dyWrsfNO8IxRE7uXjEihQ',
+  MFAErrorMessage: '',
   GooglePod:
     'https://podcasts.google.com/feed/aHR0cHM6Ly9yc3Mud2hvb3Noa2FhLmNvbS9yc3MvcG9kY2FzdC9pZC85MDI',
+  notificationURL: 'https://eftm.com',
 };
 const GlobalVariableContext = React.createContext();
 const GlobalVariableUpdater = React.createContext();

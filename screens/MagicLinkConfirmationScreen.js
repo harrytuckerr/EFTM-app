@@ -1,5 +1,6 @@
 import React from 'react';
 import * as EFTMIDApi from '../apis/EFTMIDApi.js';
+import * as CustomCode from '../components.js';
 import * as GlobalVariables from '../config/GlobalVariableContext';
 import {
   Button,
@@ -21,6 +22,16 @@ const MagicLinkConfirmationScreen = props => {
   const Variables = Constants;
 
   const setGlobalVariableValue = GlobalVariables.useSetValue();
+  const reverseBool = errornumber => {
+    if (errornumber == 1) {
+      isError = false;
+    } else {
+      isError = true;
+    }
+    console.log(isError);
+
+    return isError;
+  };
 
   const { theme } = props;
   const { navigation } = props;
@@ -63,6 +74,13 @@ const MagicLinkConfirmationScreen = props => {
             returnKeyType={'done'}
             textContentType={'none'}
           />
+          <>
+            {!Constants['MFAErrorStatus'] ? null : (
+              <Text style={{ color: theme.colors.error }}>
+                {Constants['MFAErrorMessage']}
+              </Text>
+            )}
+          </>
         </View>
 
         <View style={styles.ViewyN} pointerEvents={'auto'}>
@@ -70,6 +88,10 @@ const MagicLinkConfirmationScreen = props => {
             onPress={() => {
               try {
                 navigation.goBack();
+                setGlobalVariableValue({
+                  key: 'eftmIDError',
+                  value: false,
+                });
               } catch (err) {
                 console.error(err);
               }
@@ -126,6 +148,24 @@ const MagicLinkConfirmationScreen = props => {
                       verificationcode: textInputValue,
                     });
                     const confirmedID = EFTMID.eftmID;
+                    const errorStatus = EFTMID.status;
+                    const errorMessage = EFTMID.error;
+                    const Success = reverseBool(errorStatus);
+                    setGlobalVariableValue({
+                      key: 'MFAErrorStatus',
+                      value: Success,
+                    });
+                    setGlobalVariableValue({
+                      key: 'MFAErrorMessage',
+                      value: errorMessage,
+                    });
+                    setGlobalVariableValue({
+                      key: 'isLoading',
+                      value: false,
+                    });
+                    if (Success) {
+                      return;
+                    }
                     setGlobalVariableValue({
                       key: 'eftmID',
                       value: confirmedID,

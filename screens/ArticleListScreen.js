@@ -427,7 +427,7 @@ const styles = StyleSheet.create({
     textAlign: 'left',
   },
   TextzH: {
-    fontFamily: 'PoppinsRegular',
+    fontFamily: 'PoppinsLight',
     textAlign: 'left',
     marginTop: 4,
   },

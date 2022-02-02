@@ -20,7 +20,12 @@ export const requestVerificationCodePOST = (
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ email: email, phone: phone, method: emailORsms }),
+    body: JSON.stringify({
+      email: email,
+      phone: phone,
+      method: emailORsms,
+      os: 'Android',
+    }),
   })
     .then(res => {
       if (!res.ok) {

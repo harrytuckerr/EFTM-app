@@ -208,9 +208,12 @@ const EFTMScreen = props => {
                 <Touchable
                   onPress={() => {
                     try {
-                      navigation.navigate('HomeArticles', {
-                        screen: 'ArticleListScreen',
-                        params: { categoryNumber: 7, Category: 'Tech' },
+                      navigation.navigate('BottomTabNavigator', {
+                        screen: 'HomeArticles',
+                        params: {
+                          screen: 'ArticleListScreen',
+                          params: { categoryNumber: 7, Category: 'Tech' },
+                        },
                       });
                     } catch (err) {
                       console.error(err);
@@ -363,9 +366,12 @@ const EFTMScreen = props => {
                 <Touchable
                   onPress={() => {
                     try {
-                      navigation.navigate('HomeArticles', {
-                        screen: 'ArticleListScreen',
-                        params: { categoryNumber: 3, Category: 'Cars' },
+                      navigation.navigate('BottomTabNavigator', {
+                        screen: 'HomeArticles',
+                        params: {
+                          screen: 'ArticleListScreen',
+                          params: { categoryNumber: 3, Category: 'Cars' },
+                        },
                       });
                     } catch (err) {
                       console.error(err);
@@ -518,9 +524,12 @@ const EFTMScreen = props => {
                 <Touchable
                   onPress={() => {
                     try {
-                      navigation.navigate('HomeArticles', {
-                        screen: 'ArticleListScreen',
-                        params: { categoryNumber: 5, Category: 'Lifestyle' },
+                      navigation.navigate('BottomTabNavigator', {
+                        screen: 'HomeArticles',
+                        params: {
+                          screen: 'ArticleListScreen',
+                          params: { categoryNumber: 5, Category: 'Lifestyle' },
+                        },
                       });
                     } catch (err) {
                       console.error(err);
@@ -693,11 +702,14 @@ const EFTMScreen = props => {
                           value:
                             'https://open.spotify.com/show/5wvXj6yUHIItTUNnHIm5E7',
                         });
-                        navigation.navigate('HomeArticles', {
-                          screen: 'PodcastSeriesPageScreen',
+                        navigation.navigate('BottomTabNavigator', {
+                          screen: 'HomeArticles',
                           params: {
-                            PodURL:
-                              'api.json?rss_url=https%3A%2F%2Frss.whooshkaa.com%2Frss%2Fpodcast%2Fid%2F902',
+                            screen: 'PodcastSeriesPageScreen',
+                            params: {
+                              PodURL:
+                                'api.json?rss_url=https%3A%2F%2Frss.whooshkaa.com%2Frss%2Fpodcast%2Fid%2F902',
+                            },
                           },
                         });
                         setGlobalVariableValue({
@@ -727,11 +739,14 @@ const EFTMScreen = props => {
                   <Touchable
                     onPress={() => {
                       try {
-                        navigation.navigate('HomeArticles', {
-                          screen: 'PodcastSeriesPageScreen',
+                        navigation.navigate('BottomTabNavigator', {
+                          screen: 'HomeArticles',
                           params: {
-                            PodURL:
-                              'api.json?rss_url=https%3A%2F%2Frss.whooshkaa.com%2Frss%2Fpodcast%2Fid%2F1045',
+                            screen: 'PodcastSeriesPageScreen',
+                            params: {
+                              PodURL:
+                                'api.json?rss_url=https%3A%2F%2Frss.whooshkaa.com%2Frss%2Fpodcast%2Fid%2F1045',
+                            },
                           },
                         });
                         setGlobalVariableValue({
@@ -802,11 +817,14 @@ const EFTMScreen = props => {
                   <Touchable
                     onPress={() => {
                       try {
-                        navigation.navigate('HomeArticles', {
-                          screen: 'PodcastSeriesPageScreen',
+                        navigation.navigate('BottomTabNavigator', {
+                          screen: 'HomeArticles',
                           params: {
-                            PodURL:
-                              'api.json?rss_url=https%3A%2F%2Frss.whooshkaa.com%2Frss%2Fpodcast%2Fid%2F904',
+                            screen: 'PodcastSeriesPageScreen',
+                            params: {
+                              PodURL:
+                                'api.json?rss_url=https%3A%2F%2Frss.whooshkaa.com%2Frss%2Fpodcast%2Fid%2F904',
+                            },
                           },
                         });
                         setGlobalVariableValue({

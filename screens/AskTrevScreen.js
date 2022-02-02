@@ -23,12 +23,6 @@ const AskTrevScreen = props => {
   const Variables = Constants;
 
   const noIDCreateMessage = (Copy, Email, Phone, firstName, local) => {
-    // Type the code for the body of your function or hook here.
-    // Functions can be triggered via Button/Touchable actions.
-    // Hooks are run per ReactJS rules.
-
-    /* String line breaks are accomplished with backticks ( example: `line one
-line two` ) and will not work with special characters inside of quotes ( example: "line one line two" ) */
     var message = Copy;
     var mobile = Phone;
     var local = local;
@@ -47,14 +41,6 @@ ${message}`;
   };
 
   const createMessage = (Mobile, Local, Email, Name, copy) => {
-    // Type the code for the body of your function or hook here.
-    // Functions can be triggered via Button/Touchable actions.
-    // Hooks are run per ReactJS rules.
-
-    /* String line breaks are accomplished with backticks ( example: `line one
-line two` ) and will not work with special characters inside of quotes ( example: "line one line two" ) */
-
-    // We strip any comma's from the input.
     var message = copy;
     var mobile = CustomCode.notifications.mobile;
     var local = CustomCode.notifications.location;
@@ -62,12 +48,12 @@ line two` ) and will not work with special characters inside of quotes ( example
     var firstName = CustomCode.notifications.firstName;
 
     var fullMessage = `From: ${firstName} 
-  Email: ${email} 
-  Mobile: ${mobile} 
-  State: ${local} 
-  
-  Question: 
-  ${message}`;
+Email: ${email} 
+Mobile: ${mobile} 
+State: ${local} 
+
+Question: 
+${message}`;
 
     return fullMessage;
   };

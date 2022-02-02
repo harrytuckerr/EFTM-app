@@ -1,5 +1,10 @@
 export default {
   GooglePodcastsIcon: require('../assets/images/GooglePodcastsIcon.png'),
+  _50076938783940850x540: require('../assets/images/50076938783940850x540.png'),
+  C000200024804Still004: require('../assets/images/C000200024804Still004.png'),
+  LG8KQNEDMiniLED030: require('../assets/images/LG8KQNEDMiniLED030.jpg'),
+  DSC08172850x567: require('../assets/images/DSC08172850x567.jpeg'),
+  Product: require('../assets/images/Product.png'),
   EFTMHIRESLOGO2016: require('../assets/images/EFTMHIRESLOGO2016.png'),
   DraftbitTeamPhoto: require('../assets/images/DraftbitTeamPhoto.jpg'),
   DraftbitIcon: require('../assets/images/DraftbitIcon.png'),

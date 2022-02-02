@@ -15,12 +15,11 @@ const NotificationsScreen = props => {
   const Variables = Constants;
 
   const setGlobalVariableValue = GlobalVariables.useSetValue();
+  const sendIndividualTag = (tagName, tagValue) => {
+    CustomCode.OneSignal.sendTag(tagName, tagValue);
+  };
+
   const sendTags = (tech, cars, lifestyle, bignews, highlights) => {
-    // Type the code for the body of your function or hook here.
-    // Functions can be triggered via Button/Touchable actions.
-    // Hooks are run per ReactJS rules.
-    /* String line breaks are accomplished with backticks ( example: `line one
-line two` ) and will not work with special characters inside of quotes ( example: "line one line two" ) */
     CustomCode.OneSignal.sendTags({
       tech: tech,
       cars: cars,
@@ -31,14 +30,14 @@ line two` ) and will not work with special characters inside of quotes ( example
   };
 
   const boolToInt = VariableName => {
-    // Type the code for the body of your function or hook here.
-    // Functions can be triggered via Button/Touchable actions.
-    // Hooks are run per ReactJS rules.
     var original = +VariableName;
 
     return original.toString();
-    /* String line breaks are accomplished with backticks ( example: `line one
-line two` ) and will not work with special characters inside of quotes ( example: "line one line two" ) */
+  };
+
+  const reverseBool = errornumber => {
+    if ((errornumber = '1')) return false;
+    else if ((errornumber = '0')) return true;
   };
 
   const { theme } = props;
@@ -110,13 +109,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                         value: TechswitchValue,
                       });
                       console.log(boolToInt(TechswitchValue));
-                      sendTags(
-                        boolToInt(TechswitchValue),
-                        boolToInt(CarsswitchValue),
-                        boolToInt(LifestyleswitchValue),
-                        boolToInt(BigNewsswitchValue),
-                        boolToInt(highlightsswitchValue)
-                      );
+                      sendIndividualTag('tech', boolToInt(TechswitchValue));
                     } catch (err) {
                       console.error(err);
                     }
@@ -163,13 +156,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                         value: CarsswitchValue,
                       });
                       console.log(Constants['Carsnotifications']);
-                      sendTags(
-                        boolToInt(TechswitchValue),
-                        boolToInt(CarsswitchValue),
-                        boolToInt(LifestyleswitchValue),
-                        boolToInt(BigNewsswitchValue),
-                        boolToInt(highlightsswitchValue)
-                      );
+                      sendIndividualTag('cars', boolToInt(CarsswitchValue));
                     } catch (err) {
                       console.error(err);
                     }
@@ -216,12 +203,9 @@ line two` ) and will not work with special characters inside of quotes ( example
                         value: LifestyleswitchValue,
                       });
                       console.log(Constants['Lifestylenotifications']);
-                      sendTags(
-                        boolToInt(TechswitchValue),
-                        boolToInt(CarsswitchValue),
-                        boolToInt(LifestyleswitchValue),
-                        boolToInt(BigNewsswitchValue),
-                        boolToInt(highlightsswitchValue)
+                      sendIndividualTag(
+                        'lifestyle',
+                        boolToInt(LifestyleswitchValue)
                       );
                     } catch (err) {
                       console.error(err);
@@ -271,12 +255,9 @@ line two` ) and will not work with special characters inside of quotes ( example
                         value: highlightsswitchValue,
                       });
                       console.log(Constants['Highlightsnotifications']);
-                      sendTags(
-                        boolToInt(TechswitchValue),
-                        boolToInt(CarsswitchValue),
-                        boolToInt(LifestyleswitchValue),
-                        boolToInt(BigNewsswitchValue),
-                        boolToInt(LifestyleswitchValue)
+                      sendIndividualTag(
+                        'highlights',
+                        boolToInt(highlightsswitchValue)
                       );
                     } catch (err) {
                       console.error(err);
@@ -328,12 +309,9 @@ line two` ) and will not work with special characters inside of quotes ( example
                         value: BigNewsswitchValue,
                       });
                       console.log(Constants['Bignewsnotifications']);
-                      sendTags(
-                        boolToInt(TechswitchValue),
-                        boolToInt(CarsswitchValue),
-                        boolToInt(LifestyleswitchValue),
-                        boolToInt(BigNewsswitchValue),
-                        boolToInt(highlightsswitchValue)
+                      sendIndividualTag(
+                        'bignews',
+                        boolToInt(BigNewsswitchValue)
                       );
                     } catch (err) {
                       console.error(err);

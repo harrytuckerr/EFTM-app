@@ -10,6 +10,7 @@ import theme from './themes/DraftbitTheme.js';
 import ArticleListScreen from './screens/ArticleListScreen';
 import AskTrevScreen from './screens/AskTrevScreen';
 import EFTMIDScreen from './screens/EFTMIDScreen';
+import EFTMLinkScreen from './screens/EFTMLinkScreen';
 import EFTMScreen from './screens/EFTMScreen';
 import MagicLinkConfirmationScreen from './screens/MagicLinkConfirmationScreen';
 import NotificationsScreen from './screens/NotificationsScreen';
@@ -19,7 +20,7 @@ import WidgetsScreen from './screens/WidgetsScreen';
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-function PlaceholderScreen() {
+function Placeholder() {
   return (
     <View
       style={{
@@ -64,6 +65,11 @@ function HomeArticles() {
         name="PodcastSeriesPageScreen"
         component={PodcastSeriesPageScreen}
         options={{ headerTransparent: true, title: 'PodcastSeriesPage' }}
+      />
+      <Stack.Screen
+        name="EFTMLinkScreen"
+        component={EFTMLinkScreen}
+        options={{ headerTransparent: true, title: 'EFTMLink' }}
       />
     </Stack.Navigator>
   );
