@@ -327,6 +327,9 @@ const NotificationsScreen = props => {
               color={theme.colors.divider}
               height={1}
             />
+            <Text style={[styles.Textbq, { color: theme.colors.medium }]}>
+              {'App Version: 2.0.8'}
+            </Text>
           </ScrollView>
         </View>
       </View>
@@ -503,6 +506,12 @@ const styles = StyleSheet.create({
   },
   DividerVF: {
     height: 1,
+  },
+  Textbq: {
+    alignSelf: 'center',
+    fontFamily: 'PoppinsLight',
+    fontSize: 10,
+    marginTop: 8,
   },
   ScrollViewjSContent: {
     paddingLeft: 32,

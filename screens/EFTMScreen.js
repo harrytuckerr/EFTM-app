@@ -435,32 +435,34 @@ const EFTMScreen = props => {
                                   }
 
                                   return (
-                                    <ImageBackground
-                                      style={[
-                                        styles.ImageBackgroundO1,
-                                        { borderRadius: 25 },
-                                      ]}
-                                      source={{
-                                        uri: `${fetchData?.media_details?.sizes?.medium_large?.source_url}`,
+                                    <Touchable
+                                      onPress={async () => {
+                                        try {
+                                          await WebBrowser.openBrowserAsync(
+                                            `${carsListData?.link}`
+                                          );
+                                        } catch (err) {
+                                          console.error(err);
+                                        }
                                       }}
-                                      resizeMode={'cover'}
-                                      backgroundColor={theme.colors.background}
                                     >
                                       <ImageBackground
-                                        style={styles.ImageBackground_27}
-                                        source={Images.Angryimg2}
+                                        style={[
+                                          styles.ImageBackgroundO1,
+                                          { borderRadius: 25 },
+                                        ]}
+                                        source={{
+                                          uri: `${fetchData?.media_details?.sizes?.medium_large?.source_url}`,
+                                        }}
                                         resizeMode={'cover'}
+                                        backgroundColor={
+                                          theme.colors.background
+                                        }
                                       >
-                                        <Touchable
-                                          onPress={async () => {
-                                            try {
-                                              await WebBrowser.openBrowserAsync(
-                                                `${carsListData?.link}`
-                                              );
-                                            } catch (err) {
-                                              console.error(err);
-                                            }
-                                          }}
+                                        <ImageBackground
+                                          style={styles.ImageBackground_27}
+                                          source={Images.Angryimg2}
+                                          resizeMode={'cover'}
                                         >
                                           <View
                                             style={styles.ViewkV}
@@ -492,9 +494,9 @@ const EFTMScreen = props => {
                                               {ConvertTime(carsListData?.date)}
                                             </Text>
                                           </View>
-                                        </Touchable>
+                                        </ImageBackground>
                                       </ImageBackground>
-                                    </ImageBackground>
+                                    </Touchable>
                                   );
                                 }}
                               </RetrievePostsApi.FetchRetrieveMediaResolutionsGET>
@@ -593,32 +595,34 @@ const EFTMScreen = props => {
                                   }
 
                                   return (
-                                    <ImageBackground
-                                      style={[
-                                        styles.ImageBackgroundzs,
-                                        { borderRadius: 25 },
-                                      ]}
-                                      source={{
-                                        uri: `${fetchData?.media_details?.sizes?.medium_large?.source_url}`,
+                                    <Touchable
+                                      onPress={async () => {
+                                        try {
+                                          await WebBrowser.openBrowserAsync(
+                                            `${listLifestyleData?.link}`
+                                          );
+                                        } catch (err) {
+                                          console.error(err);
+                                        }
                                       }}
-                                      resizeMode={'cover'}
-                                      backgroundColor={theme.colors.background}
                                     >
                                       <ImageBackground
-                                        style={styles.ImageBackground_1F}
-                                        source={Images.Angryimg4}
+                                        style={[
+                                          styles.ImageBackgroundzs,
+                                          { borderRadius: 25 },
+                                        ]}
+                                        source={{
+                                          uri: `${fetchData?.media_details?.sizes?.medium_large?.source_url}`,
+                                        }}
                                         resizeMode={'cover'}
+                                        backgroundColor={
+                                          theme.colors.background
+                                        }
                                       >
-                                        <Touchable
-                                          onPress={async () => {
-                                            try {
-                                              await WebBrowser.openBrowserAsync(
-                                                `${listLifestyleData?.link}`
-                                              );
-                                            } catch (err) {
-                                              console.error(err);
-                                            }
-                                          }}
+                                        <ImageBackground
+                                          style={styles.ImageBackground_1F}
+                                          source={Images.Angryimg4}
+                                          resizeMode={'cover'}
                                         >
                                           <View
                                             style={styles.View_8W}
@@ -653,9 +657,9 @@ const EFTMScreen = props => {
                                               )}
                                             </Text>
                                           </View>
-                                        </Touchable>
+                                        </ImageBackground>
                                       </ImageBackground>
-                                    </ImageBackground>
+                                    </Touchable>
                                   );
                                 }}
                               </RetrievePostsApi.FetchRetrieveMediaResolutionsGET>
@@ -752,7 +756,7 @@ const EFTMScreen = props => {
                         setGlobalVariableValue({
                           key: 'GooglePod',
                           value:
-                            'https://podcasts.google.com/feed/aHR0cHM6Ly93d3cud2hvb3Noa2FhLmNvbS9yc3MvcG9kY2FzdC9pZC8xMDQ1',
+                            'https://podcasts.google.com/feed/aHR0cHM6Ly9yc3Mud2hvb3Noa2FhLmNvbS9yc3MvcG9kY2FzdC9pZC8xMDQ1',
                         });
                         setGlobalVariableValue({
                           key: 'SpotifyPod',
@@ -793,7 +797,7 @@ const EFTMScreen = props => {
                         setGlobalVariableValue({
                           key: 'GooglePod',
                           value:
-                            'https://podcasts.google.com/feed/aHR0cHM6Ly9yc3Mud2hvb3Noa2FhLmNvbS9yc3MvcG9kY2FzdC9pZC8xMTY2Mw?sa=X&ved=0CAIQ9sEGahgKEwjY2LLNq7r1AhUAAAAAHQAAAAAQ7AM',
+                            'https://podcasts.google.com/feed/aHR0cHM6Ly9yc3Mud2hvb3Noa2FhLmNvbS9yc3MvcG9kY2FzdC9pZC8xMTY2Mw',
                         });
                       } catch (err) {
                         console.error(err);

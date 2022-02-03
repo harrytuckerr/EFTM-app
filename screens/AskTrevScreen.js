@@ -169,6 +169,7 @@ ${message}`;
                   Linking.openURL(
                     `mailto:editor@eftm.com?subject=New Ask Trev&body=${questionInputValue}%0D%0A%0D%0AFrom,%0D%0A ${Constants['firstName']}%0D%0A%0D%0AMobile: ${Constants['mobileNumber']}%0D%0AState: ${Constants['state']}`
                   );
+                  setTextInputValue(Constants['emailEmpty']);
                 } catch (err) {
                   console.error(err);
                 }

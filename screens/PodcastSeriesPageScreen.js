@@ -117,9 +117,7 @@ const PodcastSeriesPageScreen = props => {
                           <Touchable
                             onPress={() => {
                               try {
-                                Linking.openURL(
-                                  'https://podcasts.google.com/feed/aHR0cHM6Ly9yc3Mud2hvb3Noa2FhLmNvbS9yc3MvcG9kY2FzdC9pZC85MDI'
-                                );
+                                Linking.openURL(`${Constants['GooglePod']}`);
                               } catch (err) {
                                 console.error(err);
                               }

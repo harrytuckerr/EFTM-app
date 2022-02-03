@@ -383,7 +383,7 @@ const EFTMIDScreen = props => {
                 <View
                   style={[
                     styles.View_2c,
-                    { borderRadius: 15, borderColor: theme.colors.light },
+                    { borderRadius: 15, borderColor: theme.colors.divider },
                   ]}
                   pointerEvents={'auto'}
                 >
@@ -453,7 +453,6 @@ const styles = StyleSheet.create({
   },
   KeyboardAvoidingViewMo: {
     marginTop: 16,
-    justifyContent: 'space-around',
   },
   ImageH9: {
     width: 80,
@@ -472,9 +471,9 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   View_0W: {
-    justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 32,
+    marginBottom: 48,
+    justifyContent: 'center',
   },
   TextIO: {
     fontFamily: 'PoppinsSemiBold',
@@ -539,9 +538,8 @@ const styles = StyleSheet.create({
     marginLeft: 16,
   },
   Textkl: {
-    marginTop: 4,
     fontFamily: 'PoppinsSemiBold',
-    marginBottom: 4,
+    marginBottom: 8,
     marginLeft: 16,
   },
   View_2c: {
@@ -549,9 +547,13 @@ const styles = StyleSheet.create({
     width: 300,
     marginLeft: 16,
     overflow: 'hidden',
+    borderLeftWidth: 1,
+    borderBottomWidth: 1,
+    borderRightWidth: 1,
   },
   ScrollView_27Content: {
     marginTop: 8,
+    marginBottom: 16,
   },
   ViewGk: {
     marginBottom: 16,
@@ -560,7 +562,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   screen: {
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
   },
 });
 

@@ -32,6 +32,7 @@ const AppVariables = {
   MFAErrorMessage: '',
   GooglePod:
     'https://podcasts.google.com/feed/aHR0cHM6Ly9yc3Mud2hvb3Noa2FhLmNvbS9yc3MvcG9kY2FzdC9pZC85MDI',
+  emailEmpty: '',
   notificationURL: 'https://eftm.com',
 };
 const GlobalVariableContext = React.createContext();
