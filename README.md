@@ -1,16 +1,4 @@
-# Welcome to your Draftbit app!
-
-This `README` is designed to help you get your Draftbit app running locally. Read
-through the next few sections carefully, and if you encounter any issues please
-do not hesitate to post in [Community](https://community.draftbit.com).
-
-> Note that all of the commands in this document should be run using your
-> computer's **command line**. If you're unsure of what this is, please read
-> [this](https://tutorial.djangogirls.org/en/intro_to_command_line/) guide
-> before moving on.
-
-Remember, at any point you can go back to [build.draftbit.com](https://build.draftbit.com) and continue building your app
-there!
+# EFTM React Native (Android)
 
 ## Requirements
 - [Node.js LTS release](https://nodejs.org/en/). As of 07/21 this is 14.17+
@@ -21,40 +9,6 @@ there!
 
 > Only Node.js LTS releases (even-numbered) are recommended. As Node.js [officially states](https://nodejs.org/en/about/releases/), "Production applications should only use Active LTS or Maintenance LTS releases."
 
-## Recommended Tools
-
-- [VSCode Editor](https://code.visualstudio.com/download)
-  - [VSCode Expo Extension](https://marketplace.visualstudio.com/items?itemName=byCedric.vscode-expo) for `app.json` debugging and autocomplete.
-- Windows users: [PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-windows), Bash via WSL, or the VSCode terminal.
-- Expo Go for iOS and Android
-  - 🤖  [Android Play Store](https://play.google.com/store/apps/details?id=host.exp.exponent) - Android Lollipop (5) and greater.
-  - 🍎  [iOS App Store](https://itunes.com/apps/exponent) - iOS 11 and greater.
-
-
-## Installing Node.js
-
-You can install Node by going to the [website directly](https://nodejs.org/en/) and clicking the side that says "Recommended For Most Users". This will guide you through the process. 
-
-Once Node has been installed, run the following on the command line to make sure
-it's been installed correctly:
-
-```
-$ node -v
-```
-
-If you see the current version of Node in response, you've successfully
-installed Node on your machine.
-
-For example,
-
-```
-$ node -v
-v14.17.3
-```
-
-[Learn more about installing Nodejs](https://nodejs.dev/learn/how-to-install-nodejs)
-
-> 😳 **Need help?** Try searching the [Community](https://community.draftbit.com) &mdash; which are a great resource for troubleshooting.
 
 ## Installing Expo CLI
 
